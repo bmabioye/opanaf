@@ -1570,20 +1570,31 @@
             }
         }
         
-        // Show payment error
+        // Redact sensitive tokens (pk_, sk_, access_token, client secrets) from messages shown to users
+        function sanitizeMessage(msg) {
+            if (!msg) return '';
+            try {
+                return String(msg)
+                    .replace(/(sk_live|sk_test|pk_live|pk_test)_[A-Za-z0-9_\-]*/g, '[REDACTED_KEY]')
+                    .replace(/(access_token|client_secret)=[A-Za-z0-9_\-\.]+/gi, '$1=[REDACTED]')
+                    .replace(/\s+/g, ' ')
+                    .slice(0, 300);
+            } catch (e) {
+                return 'An unexpected error occurred.';
+            }
+        }
+
         function showPaymentError(message) {
             const errorDiv = document.getElementById('payment-error');
             const successDiv = document.getElementById('payment-success');
             const errorMessage = document.getElementById('payment-error-message');
-            
+            const safe = sanitizeMessage(message);
             if (errorDiv) {
                 errorDiv.classList.remove('hidden');
-                successDiv.classList.add('hidden');
-                
-                if (errorMessage) {
-                    errorMessage.textContent = message;
-                }
-                
+                if (successDiv) successDiv.classList.add('hidden');
+                if (errorMessage) errorMessage.textContent = safe || 'Payment failed. Please try again.';
+                // Log the full (unsanitized) message to console for developers only
+                console.error('Payment error (raw):', message);
                 // Scroll to error message
                 errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
