@@ -34,7 +34,6 @@
     
     <!-- Payment Processing Scripts -->
     <script src="https://js.stripe.com/v3/"></script>
-    <script src="https://www.paypal.com/sdk/js?client-id=demo_client_id&currency=USD&components=buttons"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -764,14 +763,22 @@
                             <div class="grid grid-cols-2 gap-3">
                                 <button type="button" id="payment-stripe" class="payment-method active p-3 border-2 border-cyan-600 bg-cyan-50 dark:bg-cyan-900/20 rounded-lg text-center transition-all">
                                     <div class="flex items-center justify-center">
-                                        <i data-lucide="credit-card" class="w-5 h-5 mr-2"></i>
+                                        <!-- Simple Stripe-style badge (non-branded, generic) -->
+                                        <svg width="28" height="18" viewBox="0 0 28 18" fill="none" xmlns="http://www.w3.org/2000/svg" class="mr-2" aria-hidden="true">
+                                            <rect width="28" height="18" rx="4" fill="#6772E5"></rect>
+                                            <text x="14" y="13" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10" fill="#fff">S</text>
+                                        </svg>
                                         <span class="font-medium">Card Payment</span>
                                     </div>
                                     <div class="text-xs text-slate-500 mt-1">Visa, MasterCard, etc.</div>
                                 </button>
                                 <button type="button" id="payment-paypal" class="payment-method p-3 border-2 border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 rounded-lg text-center transition-all">
                                     <div class="flex items-center justify-center">
-                                        <i data-lucide="smartphone" class="w-5 h-5 mr-2"></i>
+                                        <!-- Generic PayPal-style badge (non-branded) -->
+                                        <svg width="28" height="18" viewBox="0 0 28 18" fill="none" xmlns="http://www.w3.org/2000/svg" class="mr-2" aria-hidden="true">
+                                            <rect width="28" height="18" rx="4" fill="#003087"></rect>
+                                            <text x="14" y="13" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="9" fill="#fff">PP</text>
+                                        </svg>
                                         <span class="font-medium">PayPal</span>
                                     </div>
                                     <div class="text-xs text-slate-500 mt-1">Quick & Secure</div>
@@ -1112,8 +1119,35 @@
         
         // Initialize payment systems when page loads
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize Stripe
-            initializeStripe();
+            // Fetch server config (publishable keys) and initialize payment SDKs dynamically
+            (async function loadPaymentConfig() {
+                try {
+                    const cfgRes = await fetch('/.netlify/functions/get-config');
+                    if (cfgRes.ok) {
+                        const cfg = await cfgRes.json();
+                        // Initialize Stripe Elements only if publishable key provided
+                        if (cfg.stripePublishableKey) {
+                            initializeStripe(cfg.stripePublishableKey);
+                        }
+                        // Dynamically load PayPal SDK using provided client id (if any)
+                        if (cfg.paypalClientId) {
+                            const script = document.createElement('script');
+                            script.src = `https://www.paypal.com/sdk/js?client-id=${cfg.paypalClientId}&currency=USD&components=buttons`;
+                            script.defer = true;
+                            script.onload = () => {
+                                console.log('PayPal SDK loaded');
+                                // Re-initialize PayPal if user selected PayPal
+                                if (currentPaymentMethod === 'paypal') setTimeout(initializePayPal, 200);
+                            };
+                            document.head.appendChild(script);
+                        }
+                    } else {
+                        console.log('Failed to fetch payment config from server');
+                    }
+                } catch (e) {
+                    console.error('Error loading payment config:', e);
+                }
+            })();
             
             // Handle donation amount selection
             document.querySelectorAll('.donation-amount').forEach(btn => {
@@ -1262,13 +1296,18 @@
             }
         });
         
-        // Initialize Stripe Elements
-        function initializeStripe() {
+        // Initialize Stripe Elements only when publishable key is available via server config
+        async function initializeStripe(publishableKey) {
+            if (!publishableKey) {
+                console.log('No Stripe publishable key provided; Stripe will be unavailable.');
+                return;
+            }
+
             try {
-                stripe = Stripe('pk_test_demo_key'); // Replace with your actual publishable key
+                stripe = Stripe(publishableKey);
                 stripeElements = stripe.elements();
-                
-                // Create card element
+
+                // Create card element (kept as optional UI; Checkout is the primary flow)
                 cardElement = stripeElements.create('card', {
                     style: {
                         base: {
@@ -1283,10 +1322,10 @@
                         },
                     },
                 });
-                
+
                 // Mount card element
                 cardElement.mount('#stripe-card-element');
-                
+
                 // Handle real-time validation errors
                 cardElement.on('change', function(event) {
                     const displayError = document.getElementById('stripe-card-errors');
@@ -1298,10 +1337,9 @@
                         displayError.classList.add('hidden');
                     }
                 });
-                
             } catch (error) {
                 console.log('Stripe initialization failed:', error);
-                showPaymentMessage('Stripe payment not available in demo mode. Form will submit as Netlify form.', 'info');
+                showPaymentMessage('Stripe payment not available. Please try another method.', 'info');
             }
         }
         
@@ -1322,50 +1360,52 @@
             const donorName = document.getElementById('donor-name')?.value;
             const donorEmail = document.getElementById('donor-email')?.value;
             const isAnonymous = document.getElementById('anonymous-donation')?.checked;
-            
+
             // Validate required fields (unless anonymous)
             if (!isAnonymous && (!donorName || !donorEmail)) {
                 showPaymentMessage('Please fill in your name and email before donating.', 'error');
                 return;
             }
-            
+
             // Show loading state
             showLoadingState(true);
-            
+
             try {
-                // In a real implementation, you would create a payment intent on your server
-                // For demo purposes, we'll simulate the payment process
-                
-                if (stripe && cardElement) {
-                    // Create token for demo (in production, use payment intents)
-                    const {token, error} = await stripe.createToken(cardElement, {
-                        name: isAnonymous ? 'Anonymous Donor' : donorName,
-                        email: isAnonymous ? undefined : donorEmail,
-                    });
-                    
-                    if (error) {
-                        throw new Error(error.message);
-                    }
-                    
-                    // Simulate server processing
-                    await new Promise(resolve => setTimeout(resolve, 2000));
-                    
-                    // Show success
-                    showPaymentSuccess({
-                        amount: selectedAmount,
-                        frequency: selectedFrequency,
-                        method: 'Stripe',
-                        name: isAnonymous ? 'Anonymous Donor' : donorName
-                    });
-                    
-                } else {
-                    // Fallback: Submit as Netlify form
-                    showPaymentMessage('Demo mode: Payment would be processed with Stripe. Submitting as form instead.', 'info');
-                    submitAsNetlifyForm();
+                // Call server function to create Stripe Checkout session
+                const payload = {
+                    amount: selectedAmount,
+                    currency: 'usd',
+                    description: `OPANAF Donation - ${selectedFrequency}`,
+                    success_url: window.location.href.split('#')[0] + '?payment=success',
+                    cancel_url: window.location.href.split('#')[0] + '?payment=cancel'
+                };
+
+                const res = await fetch('/.netlify/functions/create-stripe-checkout-session', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!res.ok) {
+                    const errText = await res.text();
+                    throw new Error(errText || 'Failed to create checkout session');
                 }
-                
+
+                const data = await res.json();
+                if (data && data.url) {
+                    // Show a brief visual confirmation before redirecting
+                    showPaymentMessage('Redirecting to secure checkout...', 'info');
+                    // small delay to allow message to be seen
+                    setTimeout(() => { window.location.href = data.url; }, 700);
+                    return;
+                }
+
+                // Fallback behavior
+                showPaymentMessage('Unable to start Checkout session. Please try again or use PayPal.', 'error');
+                submitAsNetlifyForm();
+
             } catch (error) {
-                showPaymentError(error.message);
+                showPaymentError(error.message || String(error));
             } finally {
                 showLoadingState(false);
             }
