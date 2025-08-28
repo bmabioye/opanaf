@@ -50,6 +50,7 @@ coverage/
 
 # Optional npm cache directory
 .npm
+.gitignore
 
 # Optional REPL history
 .node_repl_history
