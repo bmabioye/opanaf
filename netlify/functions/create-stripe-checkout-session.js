@@ -1,4 +1,4 @@
-const fetch = globalThis.fetch || require('node-fetch');
+const fetch = globalThis.fetch;
 
 exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') return { statusCode: 405, body: 'Method not allowed' };

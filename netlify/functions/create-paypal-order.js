@@ -1,4 +1,4 @@
-const fetch = globalThis.fetch || require('node-fetch');
+const fetch = globalThis.fetch;
 
 async function getPayPalToken(env = 'sandbox') {
   const clientId = process.env.PAYPAL_CLIENT_ID;

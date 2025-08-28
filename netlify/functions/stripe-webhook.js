@@ -1,4 +1,4 @@
-const fetch = globalThis.fetch || require('node-fetch');
+const fetch = globalThis.fetch;
 const crypto = require('crypto');
 
 // Minimal Stripe signature verifier and webhook handler.
