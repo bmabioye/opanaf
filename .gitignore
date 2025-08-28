@@ -56,7 +56,8 @@ coverage/
 .node_repl_history
 
 # Netlify
-.netlify/
+# allow repo-tracked netlify functions
+.netlify/   (local Netlify state - keep ignored)
 DEPLOYMENT.md
 
 # Local development
