@@ -58,6 +58,8 @@ coverage/
 # Netlify
 # allow repo-tracked netlify functions
 .netlify/   (local Netlify state - keep ignored)
+.netlify/functions/
+.netlify/*
 DEPLOYMENT.md
 
 # Local development
