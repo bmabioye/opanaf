@@ -1,0 +1,1647 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youth Empowerment Program | OPANAF</title>
+    <meta name="description" content="OPANAF's Youth Empowerment Program provides African youth aged 15-25 with skills, mentorship, and opportunities for personal and professional growth.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#ecfeff',
+                            100: '#cffafe',
+                            200: '#a5f3fc',
+                            300: '#67e8f9',
+                            400: '#22d3ee',
+                            500: '#06b6d4',
+                            600: '#0891b2',
+                            700: '#0e7490',
+                            800: '#155e75',
+                            900: '#164e63',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Payment Processing Scripts -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=demo_client_id&currency=USD&components=buttons"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <script>
+        // Enhanced theme initialization script
+        (function() {
+            // Function to apply theme
+            function applyTheme() {
+                const theme = localStorage.theme || 
+                    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                
+                // Remove both classes first, then add the correct one
+                document.documentElement.classList.remove('dark', 'light');
+                document.documentElement.classList.add(theme);
+                document.documentElement.setAttribute('data-theme', theme);
+                
+                // Store theme for consistency
+                localStorage.setItem('theme', theme);
+                
+                console.log(`[THEME INIT] Applied theme: ${theme}`);
+            }
+            
+            // Apply theme immediately
+            applyTheme();
+            
+            // Watch for storage changes (for cross-tab sync)
+            window.addEventListener('storage', function(e) {
+                if (e.key === 'theme') {
+                    applyTheme();
+                }
+            });
+        })();
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-200 antialiased">
+
+    <div id="header-placeholder"></div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative py-20 lg:py-32">
+            <div class="absolute inset-0 bg-gradient-to-r from-cyan-600/10 to-slate-100 dark:from-cyan-900/10 dark:to-slate-900/50 -z-10"></div>
+            <div class="container mx-auto px-4 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <span class="inline-block px-4 py-2 bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 rounded-full text-sm font-semibold mb-4">For Ages 15-25</span>
+                        <h1 class="text-4xl lg:text-5xl font-extrabold mb-6">Youth Empowerment Program</h1>
+                        <p class="text-lg lg:text-xl text-slate-600 dark:text-slate-400 mb-8 max-w-2xl">
+                            Equipping the next generation of African leaders with skills, mentorship, and opportunities to thrive in the global economy while contributing to Africa's development.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="#apply" class="bg-cyan-600 text-white font-semibold px-6 py-3 rounded-full hover:bg-cyan-700 transition-all duration-300 transform hover:scale-105">
+                                Join Now
+                            </a>
+                            <a href="#programs" class="bg-transparent border-2 border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 font-semibold px-6 py-3 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-300">
+                                Explore Programs
+                            </a>
+                        </div>
+                    </div>
+                    <div class="order-first lg:order-last">
+                        <img src="https://images.unsplash.com/photo-1521791055366-0d553872125f?q=80&w=2938&auto=format&fit=crop" alt="Empowered African youth" class="rounded-xl shadow-2xl w-full h-auto object-cover">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Program Overview Section -->
+        <section class="py-16 lg:py-24 bg-slate-100 dark:bg-slate-800">
+            <div class="container mx-auto px-4 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1541178735493-479c1a27ed24?q=80&w=2942&auto=format&fit=crop" alt="Youth learning together" class="rounded-xl shadow-lg w-full h-auto object-cover">
+                    </div>
+                    <div>
+                        <h2 class="text-3xl lg:text-4xl font-bold mb-6">Empowering Africa's Future Leaders</h2>
+                        <p class="text-lg text-slate-600 dark:text-slate-400 mb-6">
+                            Our Youth Empowerment Program targets Africans aged 15-25, providing comprehensive support to develop skills, build confidence, and create pathways to success. We address the unique challenges facing African youth through:
+                        </p>
+                        <ul class="space-y-4 text-slate-600 dark:text-slate-400">
+                            <li class="flex items-start">
+                                <div class="bg-cyan-600 text-white p-1 rounded-full mr-3 mt-1">
+                                    <i data-lucide="check" class="w-4 h-4"></i>
+                                </div>
+                                <span>Holistic personal and professional development</span>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="bg-cyan-600 text-white p-1 rounded-full mr-3 mt-1">
+                                    <i data-lucide="check" class="w-4 h-4"></i>
+                                </div>
+                                <span>Access to quality education and vocational training</span>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="bg-cyan-600 text-white p-1 rounded-full mr-3 mt-1">
+                                    <i data-lucide="check" class="w-4 h-4"></i>
+                                </div>
+                                <span>Mentorship from successful African professionals</span>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="bg-cyan-600 text-white p-1 rounded-full mr-3 mt-1">
+                                    <i data-lucide="check" class="w-4 h-4"></i>
+                                </div>
+                                <span>Entrepreneurship support and funding opportunities</span>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="bg-cyan-600 text-white p-1 rounded-full mr-3 mt-1">
+                                    <i data-lucide="check" class="w-4 h-4"></i>
+                                </div>
+                                <span>Leadership training and community engagement</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Program Pillars Section -->
+        <section id="programs" class="py-16 lg:py-24">
+            <div class="container mx-auto px-4 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl lg:text-4xl font-bold mb-4">Our Program Pillars</h2>
+                    <p class="text-lg max-w-3xl mx-auto text-slate-600 dark:text-slate-400">Four interconnected approaches to youth development and empowerment</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Pillar 1 -->
+                    <div class="bg-white dark:bg-slate-900 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                        <div class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 w-14 h-14 rounded-full flex items-center justify-center mb-6 mx-auto">
+                            <i data-lucide="brain-circuit" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-center">Mindset Development</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-center">
+                            Cultivating growth mindset, resilience, and self-efficacy through workshops and coaching
+                        </p>
+                    </div>
+                    
+                    <!-- Pillar 2 -->
+                    <div class="bg-white dark:bg-slate-900 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                        <div class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 w-14 h-14 rounded-full flex items-center justify-center mb-6 mx-auto">
+                            <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-center">Education & Skills</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-center">
+                            Academic support, digital literacy, and vocational training for employability
+                        </p>
+                    </div>
+                    
+                    <!-- Pillar 3 -->
+                    <div class="bg-white dark:bg-slate-900 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                        <div class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 w-14 h-14 rounded-full flex items-center justify-center mb-6 mx-auto">
+                            <i data-lucide="lightbulb" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-center">Innovation & Leadership</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-center">
+                            Fostering creativity, problem-solving, and community leadership skills
+                        </p>
+                    </div>
+                    
+                    <!-- Pillar 4 -->
+                    <div class="bg-white dark:bg-slate-900 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                        <div class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 w-14 h-14 rounded-full flex items-center justify-center mb-6 mx-auto">
+                            <i data-lucide="heart-handshake" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-center">Mentorship & Network</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-center">
+                            Connecting youth with mentors and building professional networks
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Program Components Section -->
+        <section class="py-16 lg:py-24 bg-slate-100 dark:bg-slate-800">
+            <div class="container mx-auto px-4 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl lg:text-4xl font-bold mb-4">Program Components</h2>
+                    <p class="text-lg max-w-3xl mx-auto text-slate-600 dark:text-slate-400">Comprehensive offerings tailored to African youth needs</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Component 1 -->
+                    <div class="bg-white dark:bg-slate-900 p-8 rounded-xl shadow-lg">
+                        <div class="flex items-center mb-6">
+                            <div class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 p-3 rounded-lg mr-4">
+                                <i data-lucide="book-open" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Youth Academy</h3>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400 mb-4">
+                            After-school and weekend programs covering STEM, financial literacy, public speaking, and critical thinking.
+                        </p>
+                        <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                            <li class="flex items-start">
+                                <i data-lucide="check" class="w-4 h-4 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                <span>Academic tutoring and test preparation</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="check" class="w-4 h-4 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                <span>Career exploration workshops</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="check" class="w-4 h-4 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                <span>University application guidance</span>
+                            </li>
+                        </ul>
+                        <div class="mt-6">
+                            <button onclick="showComingSoonModal('Youth Academy Program')" class="text-cyan-600 dark:text-cyan-400 hover:text-cyan-700 dark:hover:text-cyan-300 font-medium text-sm flex items-center transition-colors">
+                                Learn More <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Component 2 -->
+                    <div class="bg-white dark:bg-slate-900 p-8 rounded-xl shadow-lg">
+                        <div class="flex items-center mb-6">
+                            <div class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 p-3 rounded-lg mr-4">
+                                <i data-lucide="code-2" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Tech & Digital Skills</h3>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400 mb-4">
+                            Preparing youth for the digital economy through hands-on technology training.
+                        </p>
+                        <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                            <li class="flex items-start">
+                                <i data-lucide="check" class="w-4 h-4 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                <span>Coding and web development bootcamps</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="check" class="w-4 h-4 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                <span>Digital marketing and content creation</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="check" class="w-4 h-4 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                <span>AI and data science fundamentals</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="check" class="w-4 h-4 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                <span>Tech entrepreneurship training</span>
+                            </li>
+                        </ul>
+                        <div class="mt-6">
+                            <button onclick="showComingSoonModal('Tech Bootcamp for Youth')" class="text-cyan-600 dark:text-cyan-400 hover:text-cyan-700 dark:hover:text-cyan-300 font-medium text-sm flex items-center transition-colors">
+                                Join Waitlist <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Component 3 -->
+                    <div class="bg-white dark:bg-slate-900 p-8 rounded-xl shadow-lg">
+                        <div class="flex items-center mb-6">
+                            <div class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 p-3 rounded-lg mr-4">
+                                <i data-lucide="mic-2" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Leadership Development</h3>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400 mb-4">
+                            Building the next generation of African leaders through experiential learning.
+                        </p>
+                        <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                            <li class="flex items-start">
+                                <i data-lucide="check" class="w-4 h-4 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                <span>Public speaking and debate clubs</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="check" class="w-4 h-4 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                <span>Model UN and youth parliament programs</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="check" class="w-4 h-4 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                <span>Community service initiatives</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="check" class="w-4 h-4 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                <span>Youth advisory council</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Component 4 -->
+                    <div class="bg-white dark:bg-slate-900 p-8 rounded-xl shadow-lg">
+                        <div class="flex items-center mb-6">
+                            <div class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 p-3 rounded-lg mr-4">
+                                <i data-lucide="briefcase" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Career Pathways</h3>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400 mb-4">
+                            Bridging the gap between education and employment through practical experiences.
+                        </p>
+                        <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                            <li class="flex items-start">
+                                <i data-lucide="check" class="w-4 h-4 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                <span>Internship and apprenticeship programs</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="check" class="w-4 h-4 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                <span>Job shadowing opportunities</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="check" class="w-4 h-4 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                <span>Resume building and interview preparation</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="check" class="w-4 h-4 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                <span>Industry networking events</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Component 5 -->
+                    <div class="bg-white dark:bg-slate-900 p-8 rounded-xl shadow-lg">
+                        <div class="flex items-center mb-6">
+                            <div class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 p-3 rounded-lg mr-4">
+                                <i data-lucide="sparkles" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Creative Arts</h3>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400 mb-4">
+                            Nurturing artistic talent and creative expression as viable career paths.
+                        </p>
+                        <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                            <li class="flex items-start">
+                                <i data-lucide="check" class="w-4 h-4 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                <span>Visual arts and design workshops</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="check" class="w-4 h-4 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                <span>Music production and performance</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="check" class="w-4 h-4 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                <span>Creative writing and storytelling</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="check" class="w-4 h-4 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                <span>Fashion and textile design</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Component 6 -->
+                    <div class="bg-white dark:bg-slate-900 p-8 rounded-xl shadow-lg">
+                        <div class="flex items-center mb-6">
+                            <div class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 p-3 rounded-lg mr-4">
+                                <i data-lucide="seedling" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Entrepreneurship</h3>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400 mb-4">
+                            Supporting young innovators to develop business ideas and social enterprises.
+                        </p>
+                        <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                            <li class="flex items-start">
+                                <i data-lucide="check" class="w-4 h-4 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                <span>Startup incubator program</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="check" class="w-4 h-4 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                <span>Business plan competitions</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="check" class="w-4 h-4 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                <span>Micro-grants for youth-led ventures</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="check" class="w-4 h-4 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                <span>Financial literacy training</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact Section -->
+        <section class="py-16 lg:py-24">
+            <div class="container mx-auto px-4 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl lg:text-4xl font-bold mb-4">Our Youth Impact</h2>
+                    <p class="text-lg max-w-3xl mx-auto text-slate-600 dark:text-slate-400">Transforming lives and communities through youth empowerment</p>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-slate-100 dark:bg-slate-800 p-8 rounded-xl text-center float-animation">
+                        <div class="bg-cyan-600 text-white w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold mb-4 mx-auto">85%</div>
+                        <h3 class="text-xl font-bold mb-2">Program Completion</h3>
+                        <p class="text-slate-600 dark:text-slate-400">Of participants complete our programs, significantly higher than regional averages.</p>
+                    </div>
+                    <div class="bg-slate-100 dark:bg-slate-800 p-8 rounded-xl text-center float-animation" style="animation-delay: 0.5s">
+                        <div class="bg-cyan-600 text-white w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold mb-4 mx-auto">72%</div>
+                        <h3 class="text-xl font-bold mb-2">Further Education</h3>
+                        <p class="text-slate-600 dark:text-slate-400">Of graduates pursue higher education or vocational training after our programs.</p>
+                    </div>
+                    <div class="bg-slate-100 dark:bg-slate-800 p-8 rounded-xl text-center float-animation" style="animation-delay: 1s">
+                        <div class="bg-cyan-600 text-white w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold mb-4 mx-auto">2.5K</div>
+                        <h3 class="text-xl font-bold mb-2">Youth Served</h3>
+                        <p class="text-slate-600 dark:text-slate-400">Across 15 African countries since our program launched.</p>
+                    </div>
+                </div>
+                
+                <div class="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-slate-100 dark:bg-slate-800 p-8 rounded-xl">
+                        <div class="flex items-center mb-6">
+                            <div class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 p-3 rounded-lg mr-4">
+                                <i data-lucide="users" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Community Impact</h3>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400">
+                            Our youth have initiated 120+ community projects addressing local challenges in education, environment, and health.
+                        </p>
+                    </div>
+                    <div class="bg-slate-100 dark:bg-slate-800 p-8 rounded-xl">
+                        <div class="flex items-center mb-6">
+                            <div class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 p-3 rounded-lg mr-4">
+                                <i data-lucide="award" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Awards & Recognition</h3>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400">
+                            35+ program alumni have received national and international awards for innovation and leadership.
+                        </p>
+                    </div>
+                    <div class="bg-slate-100 dark:bg-slate-800 p-8 rounded-xl">
+                        <div class="flex items-center mb-6">
+                            <div class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 p-3 rounded-lg mr-4">
+                                <i data-lucide="briefcase" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Economic Impact</h3>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400">
+                            Youth-led businesses from our program have created over 500 jobs in their communities.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Success Stories Section -->
+        <section class="py-16 lg:py-24 bg-slate-100 dark:bg-slate-800">
+            <div class="container mx-auto px-4 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl lg:text-4xl font-bold mb-4">Youth Success Stories</h2>
+                    <p class="text-lg max-w-3xl mx-auto text-slate-600 dark:text-slate-400">Hear from young Africans whose lives have been transformed through our programs</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Story 1 -->
+
+                    <div class="bg-white dark:bg-slate-900 p-8 rounded-xl shadow-lg">
+                        <div class="flex items-center mb-6">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Amina" class="w-14 h-14 rounded-full object-cover mr-4">
+                            <div>
+                                <h4 class="font-bold">Amina K.</h4>
+                                <p class="text-sm text-slate-500 dark:text-slate-400">Tech Entrepreneur, Lagos</p>
+                                <div class="flex text-amber-400 mt-1">
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400 mb-4">
+                            "The coding bootcamp changed my life. At 19, I launched my first app that helps farmers track crop prices. OPANAF's mentorship gave me the confidence to pursue tech as a career."
+                        </p>
+                        <div class="flex items-center text-sm text-slate-500 dark:text-slate-400">
+                            <i data-lucide="map-pin" class="w-4 h-4 mr-1"></i>
+                            <span>Participant since 2021</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Story 2 -->
+                    <div class="bg-white dark:bg-slate-900 p-8 rounded-xl shadow-lg">
+                        <div class="flex items-center mb-6">
+                            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Kwame" class="w-14 h-14 rounded-full object-cover mr-4">
+                            <div>
+                                <h4 class="font-bold">Kwame O.</h4>
+                                <p class="text-sm text-slate-500 dark:text-slate-400">Environmental Activist, Accra</p>
+                                <div class="flex text-amber-400 mt-1">
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400 mb-4">
+                            "Through OPANAF's leadership program, I started a recycling initiative in my community. We've recycled over 5 tons of plastic and created jobs for 15 youth."
+                        </p>
+                        <div class="flex items-center text-sm text-slate-500 dark:text-slate-400">
+                            <i data-lucide="map-pin" class="w-4 h-4 mr-1"></i>
+                            <span>Participant since 2020</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Story 3 -->
+                    <div class="bg-white dark:bg-slate-900 p-8 rounded-xl shadow-lg">
+                        <div class="flex items-center mb-6">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Fatima" class="w-14 h-14 rounded-full object-cover mr-4">
+                            <div>
+                                <h4 class="font-bold">Fatima N.</h4>
+                                <p class="text-sm text-slate-500 dark:text-slate-400">Medical Student, Nairobi</p>
+                                <div class="flex text-amber-400 mt-1">
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                    <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400 mb-4">
+                            "OPANAF's scholarship program helped me become the first in my family to attend university. I'm now studying medicine to give back to my community."
+                        </p>
+                        <div class="flex items-center text-sm text-slate-500 dark:text-slate-400">
+                            <i data-lucide="map-pin" class="w-4 h-4 mr-1"></i>
+                            <span>Participant since 2019</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-12 text-center">
+                    <a href="#" class="inline-flex items-center text-cyan-600 dark:text-cyan-400 font-medium hover:underline">
+                        View more success stories
+                        <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section id="apply" class="py-16 lg:py-24 bg-cyan-600">
+            <div class="container mx-auto px-4 lg:px-8">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-3xl lg:text-4xl font-bold text-white mb-6">Ready to Empower the Next Generation?</h2>
+                    <p class="text-lg text-cyan-100 mb-8">Whether you're a young person looking to grow or someone who wants to support African youth, we have opportunities for you to get involved.</p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <a href="#youth-application" class="bg-white text-cyan-600 font-semibold px-8 py-4 rounded-full hover:bg-slate-100 transition-all duration-300 transform hover:scale-105">
+                            Apply as Youth
+                        </a>
+                        <a href="#mentor-application" class="bg-transparent border-2 border-white text-white font-semibold px-8 py-4 rounded-full hover:bg-white hover:text-cyan-600 transition-all duration-300">
+                            Become a Mentor
+                        </a>
+                        <a href="#donate" class="bg-cyan-800 text-white font-semibold px-8 py-4 rounded-full hover:bg-cyan-900 transition-all duration-300">
+                            Donate to Support
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Application Section -->
+        <section class="py-16 lg:py-24">
+            <div class="container mx-auto px-4 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-12">
+                    <!-- Youth Application -->
+                    <div id="youth-application" class="bg-white dark:bg-slate-900 p-8 rounded-xl shadow-lg">
+                        <h3 class="text-2xl font-bold mb-6">Youth Application</h3>
+                        <form name="youth-application" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="space-y-6">
+                            <input type="hidden" name="form-name" value="youth-application">
+                            <div class="hidden">
+                                <label>Don't fill this out if you're human: <input name="bot-field"></label>
+                            </div>
+                            <div>
+                                <label for="youth-name" class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Full Name</label>
+                                <input type="text" name="name" id="youth-name" required class="w-full px-4 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500">
+                            </div>
+                            
+                            <div>
+                                <label for="youth-age" class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Age</label>
+                                <input type="number" name="age" id="youth-age" min="15" max="25" required class="w-full px-4 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500">
+                            </div>
+                            
+                            <div>
+                                <label for="youth-location" class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Location</label>
+                                <input type="text" name="location" id="youth-location" required class="w-full px-4 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500" placeholder="City and Country">
+                            </div>
+                            
+                            <div>
+                                <label for="youth-email" class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Email Address</label>
+                                <input type="email" name="email" id="youth-email" required class="w-full px-4 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500">
+                            </div>
+                            
+                            <div>
+                                <label for="youth-phone" class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Phone Number</label>
+                                <input type="tel" name="phone" id="youth-phone" class="w-full px-4 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500">
+                            </div>
+                            
+                            <div>
+                                <label for="youth-interests" class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Program Interests</label>
+                                <select name="interests" id="youth-interests" multiple class="w-full px-4 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500">
+                                    <option value="academy">Youth Academy</option>
+                                    <option value="tech">Tech & Digital Skills</option>
+                                    <option value="leadership">Leadership Development</option>
+                                    <option value="career">Career Pathways</option>
+                                    <option value="arts">Creative Arts</option>
+                                    <option value="entrepreneurship">Entrepreneurship</option>
+                                </select>
+                                <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">Hold Ctrl/Cmd to select multiple options</p>
+                            </div>
+                            
+                            <div>
+                                <label for="youth-goals" class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Personal Goals</label>
+                                <textarea name="goals" id="youth-goals" rows="3" class="w-full px-4 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500" placeholder="What do you hope to achieve through this program?"></textarea>
+                            </div>
+                            
+                            <div class="mt-6">
+                                <button type="submit" class="w-full bg-cyan-600 text-white font-semibold px-6 py-4 rounded-lg hover:bg-cyan-700 transition-all duration-300">
+                                    Submit Application
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- Mentor Application -->
+                    <div id="mentor-application" class="bg-white dark:bg-slate-900 p-8 rounded-xl shadow-lg">
+                        <h3 class="text-2xl font-bold mb-6">Mentor Application</h3>
+                        <form name="mentor-application" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="space-y-6">
+                            <input type="hidden" name="form-name" value="mentor-application">
+                            <div class="hidden">
+                                <label>Don't fill this out if you're human: <input name="bot-field"></label>
+                            </div>
+                            <div>
+                                <label for="mentor-name" class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Full Name</label>
+                                <input type="text" name="name" id="mentor-name" required class="w-full px-4 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500">
+                            </div>
+                            
+                            <div>
+                                <label for="mentor-email" class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Email Address</label>
+                                <input type="email" name="email" id="mentor-email" required class="w-full px-4 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500">
+                            </div>
+                            
+                            <div>
+                                <label for="mentor-profession" class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Profession</label>
+                                <input type="text" name="profession" id="mentor-profession" required class="w-full px-4 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500">
+                            </div>
+                            
+                            <div>
+                                <label for="mentor-expertise" class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Areas of Expertise</label>
+                                <textarea name="expertise" id="mentor-expertise" rows="2" class="w-full px-4 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500" placeholder="Skills, industries, or topics you can mentor on"></textarea>
+                            </div>
+                            
+                            <div>
+                                <label for="mentor-commitment" class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Mentorship Commitment</label>
+                                <select name="commitment" id="mentor-commitment" required class="w-full px-4 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500">
+                                    <option value="">Select preferred commitment</option>
+                                    <option value="1-2">1-2 hours per month</option>
+                                    <option value="3-5">3-5 hours per month</option>
+                                    <option value="5+">5+ hours per month</option>
+                                    <option value="project">Project-based mentorship</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label for="mentor-why" class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Why do you want to mentor?</label>
+                                <textarea name="why" id="mentor-why" rows="3" class="w-full px-4 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500"></textarea>
+                            </div>
+                            
+                            <div class="mt-6">
+                                <button type="submit" class="w-full bg-cyan-600 text-white font-semibold px-6 py-4 rounded-lg hover:bg-cyan-700 transition-all duration-300">
+                                    Apply to Mentor
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Donation Section -->
+        <section id="donate" class="py-16 lg:py-24 bg-slate-100 dark:bg-slate-800">
+            <div class="container mx-auto px-4 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-3xl lg:text-4xl font-bold mb-6">Support Youth Empowerment</h2>
+                        <p class="text-lg text-slate-600 dark:text-slate-400 mb-6">
+                            Your donation helps us provide more scholarships, expand our programs, and reach underserved communities across Africa. Every contribution makes a difference in a young person's life.
+                        </p>
+                        
+                        <div class="space-y-6 mb-8">
+                            <div class="flex items-start">
+                                <div class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 p-3 rounded-lg mr-4">
+                                    <i data-lucide="dollar-sign" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">Where Your Money Goes</h4>
+                                    <ul class="list-disc pl-5 text-slate-600 dark:text-slate-400 space-y-1">
+                                        <li>Scholarships for underprivileged youth</li>
+                                        <li>Technology and learning materials</li>
+                                        <li>Program expansion to rural areas</li>
+                                        <li>Youth entrepreneurship grants</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 p-3 rounded-lg mr-4">
+                                    <i data-lucide="heart" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">Other Ways to Give</h4>
+                                    <ul class="list-disc pl-5 text-slate-600 dark:text-slate-400 space-y-1">
+                                        <li>Sponsor a specific program</li>
+                                        <li>Corporate matching gifts</li>
+                                        <li>In-kind donations (equipment, books)</li>
+                                        <li>Legacy giving</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-slate-900 p-8 rounded-xl shadow-lg">
+                        <h3 class="text-2xl font-bold mb-6">Make a Donation</h3>
+                        
+                        <!-- Payment Method Selection -->
+                        <div class="mb-6">
+                            <label class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-3">Choose Payment Method</label>
+                            <div class="grid grid-cols-2 gap-3">
+                                <button type="button" id="payment-stripe" class="payment-method active p-3 border-2 border-cyan-600 bg-cyan-50 dark:bg-cyan-900/20 rounded-lg text-center transition-all">
+                                    <div class="flex items-center justify-center">
+                                        <i data-lucide="credit-card" class="w-5 h-5 mr-2"></i>
+                                        <span class="font-medium">Card Payment</span>
+                                    </div>
+                                    <div class="text-xs text-slate-500 mt-1">Visa, MasterCard, etc.</div>
+                                </button>
+                                <button type="button" id="payment-paypal" class="payment-method p-3 border-2 border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 rounded-lg text-center transition-all">
+                                    <div class="flex items-center justify-center">
+                                        <i data-lucide="smartphone" class="w-5 h-5 mr-2"></i>
+                                        <span class="font-medium">PayPal</span>
+                                    </div>
+                                    <div class="text-xs text-slate-500 mt-1">Quick & Secure</div>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Donation Form -->
+                        <form id="donation-form" class="space-y-6">
+                            <div>
+                                <label class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-3">Donation Amount</label>
+                                <div class="grid grid-cols-4 gap-3 mb-4">
+                                    <button type="button" class="donation-amount py-3 px-4 border border-slate-300 dark:border-slate-700 rounded-lg hover:bg-cyan-600 hover:text-white hover:border-cyan-600 transition-colors text-center" data-amount="25">$25</button>
+                                    <button type="button" class="donation-amount py-3 px-4 border border-slate-300 dark:border-slate-700 rounded-lg hover:bg-cyan-600 hover:text-white hover:border-cyan-600 transition-colors text-center" data-amount="50">$50</button>
+                                    <button type="button" class="donation-amount py-3 px-4 border border-slate-300 dark:border-slate-700 rounded-lg hover:bg-cyan-600 hover:text-white hover:border-cyan-600 transition-colors text-center" data-amount="100">$100</button>
+                                    <button type="button" class="donation-amount py-3 px-4 border border-slate-300 dark:border-slate-700 rounded-lg hover:bg-cyan-600 hover:text-white hover:border-cyan-600 transition-colors text-center" data-amount="250">$250</button>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="text-2xl font-bold mr-2">$</span>
+                                    <input type="number" id="custom-amount" placeholder="Enter custom amount" min="5" class="flex-1 px-4 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-3">Donation Frequency</label>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <button type="button" id="frequency-once" class="frequency-btn active py-3 px-4 border-2 border-cyan-600 bg-cyan-50 dark:bg-cyan-900/20 rounded-lg text-center transition-all">
+                                        <span class="font-medium">One-time</span>
+                                    </button>
+                                    <button type="button" id="frequency-monthly" class="frequency-btn py-3 px-4 border-2 border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 rounded-lg text-center transition-all">
+                                        <span class="font-medium">Monthly</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="donor-name" class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Full Name</label>
+                                <input type="text" id="donor-name" required class="w-full px-4 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500">
+                            </div>
+
+                            <div>
+                                <label for="donor-email" class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Email Address</label>
+                                <input type="email" id="donor-email" required class="w-full px-4 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500">
+                            </div>
+
+                            <!-- Stripe Payment Elements (shown when Stripe is selected) -->
+                            <div id="stripe-payment-section">
+                                <div>
+                                    <label class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-3">Payment Information</label>
+                                    <div id="stripe-card-element" class="p-4 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg">
+                                        <!-- Stripe Elements will create form elements here -->
+                                    </div>
+                                    <div id="stripe-card-errors" class="mt-2 text-red-600 text-sm hidden"></div>
+                                </div>
+                            </div>
+
+                            <!-- PayPal Payment Elements (shown when PayPal is selected) -->
+                            <div id="paypal-payment-section" class="hidden">
+                                <div id="paypal-button-container"></div>
+                                <div class="text-sm text-slate-500 dark:text-slate-400 text-center mt-3">
+                                    <i data-lucide="shield-check" class="w-4 h-4 inline mr-1"></i>
+                                    Secure payment powered by PayPal
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="donation-message" class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Message (Optional)</label>
+                                <textarea id="donation-message" rows="2" class="w-full px-4 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500" placeholder="Encouragement for our youth"></textarea>
+                            </div>
+
+                            <div>
+                                <label class="flex items-start">
+                                    <input type="checkbox" id="anonymous-donation" class="mt-1 w-4 h-4 text-cyan-600 bg-slate-100 border-slate-300 rounded focus:ring-cyan-500">
+                                    <span class="ml-2 text-sm text-slate-600 dark:text-slate-400">Make this donation anonymous</span>
+                                </label>
+                            </div>
+                            
+                            <div class="mt-6">
+                                <button type="submit" id="donate-btn" class="w-full bg-cyan-600 text-white font-semibold px-6 py-4 rounded-lg hover:bg-cyan-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
+                                    <span id="donate-btn-text">Donate Now</span>
+                                    <div id="donate-btn-loading" class="hidden flex items-center justify-center">
+                                        <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                        </svg>
+                                        Processing...
+                                    </div>
+                                </button>
+                            </div>
+                        </form>
+
+                        <!-- Success/Error Messages -->
+                        <div id="payment-success" class="hidden mt-6 p-4 bg-green-100 dark:bg-green-900/20 border border-green-300 dark:border-green-700 rounded-lg">
+                            <div class="flex items-center">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-600 dark:text-green-400 mr-2"></i>
+                                <span class="text-green-800 dark:text-green-200 font-medium">Thank you for your donation!</span>
+                            </div>
+                            <p class="text-green-700 dark:text-green-300 text-sm mt-1">Your support makes a real difference in young lives.</p>
+                        </div>
+
+                        <div id="payment-error" class="hidden mt-6 p-4 bg-red-100 dark:bg-red-900/20 border border-red-300 dark:border-red-700 rounded-lg">
+                            <div class="flex items-center">
+                                <i data-lucide="x-circle" class="w-5 h-5 text-red-600 dark:text-red-400 mr-2"></i>
+                                <span class="text-red-800 dark:text-red-200 font-medium">Payment failed</span>
+                            </div>
+                            <p id="payment-error-message" class="text-red-700 dark:text-red-300 text-sm mt-1"></p>
+                        </div>
+
+                        <!-- Payment Method Info -->
+                        <div class="mt-6 pt-6 border-t border-slate-200 dark:border-slate-700">
+                            <div class="flex items-center justify-center space-x-4 text-slate-500 dark:text-slate-400">
+                                <i data-lucide="shield-check" class="w-5 h-5"></i>
+                                <span class="text-sm">256-bit SSL encryption</span>
+                                <span class="text-sm">•</span>
+                                <span class="text-sm">PCI Compliant</span>
+                                <span class="text-sm">•</span>
+                                <span class="text-sm">Tax deductible</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="py-16 lg:py-24">
+            <div class="container mx-auto px-4 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl lg:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
+                    <p class="text-lg max-w-3xl mx-auto text-slate-600 dark:text-slate-400">Answers to common questions about our Youth Empowerment Program</p>
+                </div>
+                
+                <div class="max-w-3xl mx-auto space-y-4">
+                    <!-- FAQ Item 1 -->
+                    <div class="border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                            <span class="text-lg font-medium">What ages does the Youth Empowerment Program serve?</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 transform transition-transform"></i>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-6 pt-0">
+                            <p class="text-slate-600 dark:text-slate-400">Our core programs are designed for African youth aged 15-25. We occasionally have special initiatives for younger adolescents (13-14) and young adults (26-30) depending on the program focus.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 2 -->
+                    <div class="border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                            <span class="text-lg font-medium">Is there a cost to participate in the programs?</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 transform transition-transform"></i>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-6 pt-0">
+                            <p class="text-slate-600 dark:text-slate-400">Most of our programs are offered free of charge thanks to donor support. Some advanced or specialized programs may have nominal fees, but we never turn away youth due to inability to pay - scholarships are always available.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 3 -->
+                    <div class="border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                            <span class="text-lg font-medium">How are youth selected for the program?</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 transform transition-transform"></i>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-6 pt-0">
+                            <p class="text-slate-600 dark:text-slate-400">We use a holistic review process considering:</p>
+                            <ul class="mt-2 space-y-2 text-slate-600 dark:text-slate-400">
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-4 h-4 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Demonstrated need for opportunities</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-4 h-4 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Commitment to personal growth</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-4 h-4 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Potential to benefit from and contribute to the program</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-4 h-4 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Geographic diversity across Africa</span>
+                                </li>
+                            </ul>
+                            <p class="mt-4 text-slate-600 dark:text-slate-400">No single factor determines selection - we look at the whole person.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 4 -->
+                    <div class="border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                            <span class="text-lg font-medium">Do you offer programs in rural areas?</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 transform transition-transform"></i>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-6 pt-0">
+                            <p class="text-slate-600 dark:text-slate-400">Yes! We're committed to reaching youth across all geographic locations. We partner with local community organizations to deliver programs in rural areas through:</p>
+                            <ul class="mt-2 space-y-2 text-slate-600 dark:text-slate-400">
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-4 h-4 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Mobile learning units with technology access</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-4 h-4 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Community-based mentorship networks</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-4 h-4 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Radio and low-bandwidth digital programs</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-4 h-4 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Periodic intensive workshops</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 5 -->
+                    <div class="border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                            <span class="text-lg font-medium">How can I get OPANAF Youth Programs in my community?</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 transform transition-transform"></i>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-6 pt-0">
+                            <p class="text-slate-600 dark:text-slate-400">We're always looking to expand our reach through partnerships with local organizations. Here's how to bring our programs to your community:</p>
+                            <ol class="mt-2 space-y-2 text-slate-600 dark:text-slate-400 list-decimal pl-5">
+                                <li>Identify a local organization (school, community center, etc.) willing to host programs</li>
+                                <li>Gather a group of at least 15 interested youth (aged 15-25)</li>
+                                <li>Contact our partnerships team with details about your community's needs</li>
+                                <li>We'll work with you to develop an implementation plan</li>
+                            </ol>
+                            <p class="mt-4 text-slate-600 dark:text-slate-400">We prioritize communities with limited existing youth development resources.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="py-16 lg:py-24 bg-slate-100 dark:bg-slate-800">
+            <div class="container mx-auto px-4 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-3xl lg:text-4xl font-bold mb-6">Get in Touch</h2>
+                        <p class="text-lg text-slate-600 dark:text-slate-400 mb-8">Have questions about our Youth Empowerment Program? Our team is here to help.</p>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 p-3 rounded-lg mr-4">
+                                    <i data-lucide="mail" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">Email Us</h4>
+                                    <a href="mailto:youth@opanaf.org" class="text-slate-600 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400">youth@opanaf.org</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 p-3 rounded-lg mr-4">
+                                    <i data-lucide="phone" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">Call Us</h4>
+                                    <a href="tel:+2348000000000" class="text-slate-600 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400">+234 800 000 0000 (Nigeria)</a><br>
+                                    <a href="tel:+254700000000" class="text-slate-600 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400">+254 700 000 000 (Kenya)</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 p-3 rounded-lg mr-4">
+                                    <i data-lucide="map-pin" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">Visit Us</h4>
+                                    <p class="text-slate-600 dark:text-slate-400">Lagos Youth Center: 123 Empowerment Avenue, Ikeja, Lagos</p>
+                                    <p class="text-slate-600 dark:text-slate-400 mt-2">Nairobi Youth Hub: United Nations Avenue, Gigiri, Nairobi</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-slate-900 p-8 rounded-xl shadow-lg">
+                        <h3 class="text-2xl font-bold mb-6">Send Us a Message</h3>
+                        <form name="youth-contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="space-y-6">
+                            <input type="hidden" name="form-name" value="youth-contact">
+                            <div class="hidden">
+                                <label>Don't fill this out if you're human: <input name="bot-field"></label>
+                            </div>
+                            <div>
+                            <label for="contact-name" class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Your Name</label>
+                                <input type="text" name="name" id="contact-name" required class="w-full px-4 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500">
+                            </div>
+                            
+                            <div>
+                                <label for="contact-email" class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Email Address</label>
+                                <input type="email" name="email" id="contact-email" required class="w-full px-4 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500">
+                            </div>
+                            
+                            <div>
+                                <label for="contact-subject" class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Subject</label>
+                                <select name="subject" id="contact-subject" class="w-full px-4 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500">
+                                    <option value="">Select a subject</option>
+                                    <option value="candidate">Candidate Inquiry</option>
+                                    <option value="employer">Employer Partnership</option>
+                                    <option value="general">General Question</option>
+                                    <option value="feedback">Feedback/Suggestion</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label for="contact-message" class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Your Message</label>
+                                <textarea name="message" id="contact-message" rows="4" class="w-full px-4 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500"></textarea>
+                            </div>
+                            
+                            <div class="mt-6">
+                                <button type="submit" class="w-full bg-cyan-600 text-white font-semibold px-6 py-4 rounded-lg hover:bg-cyan-700 transition-all duration-300">
+                                    Send Message
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="script.js"></script>
+    
+    <!-- Payment Processing Script -->
+    <script>
+        // Payment processing functionality
+        let stripe = null;
+        let stripeElements = null;
+        let cardElement = null;
+        let selectedAmount = 25; // Default amount
+        let selectedFrequency = 'one-time';
+        let currentPaymentMethod = 'stripe'; // Default to Stripe
+        
+        // Initialize payment systems when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Stripe
+            initializeStripe();
+            
+            // Handle donation amount selection
+            document.querySelectorAll('.donation-amount').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all amount buttons
+                    document.querySelectorAll('.donation-amount').forEach(b => {
+                        b.classList.remove('bg-cyan-600', 'text-white', 'border-cyan-600');
+                        b.classList.add('border-slate-300', 'dark:border-slate-700');
+                    });
+                    // Add active class to selected button
+                    this.classList.remove('border-slate-300', 'dark:border-slate-700');
+                    this.classList.add('bg-cyan-600', 'text-white', 'border-cyan-600');
+                    selectedAmount = parseInt(this.dataset.amount);
+                    
+                    // Clear custom amount if preset is selected
+                    const customAmount = document.getElementById('custom-amount');
+                    if (customAmount) customAmount.value = '';
+                    
+                    updateDonateButton();
+                    updatePayPalButtons();
+                });
+            });
+            
+            // Handle frequency selection
+            document.querySelectorAll('.frequency-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all frequency buttons
+                    document.querySelectorAll('.frequency-btn').forEach(b => {
+                        b.classList.remove('border-cyan-600', 'bg-cyan-50', 'dark:bg-cyan-900/20');
+                        b.classList.add('border-slate-300', 'dark:border-slate-600', 'bg-white', 'dark:bg-slate-800');
+                    });
+                    // Add active class to selected button
+                    this.classList.remove('border-slate-300', 'dark:border-slate-600', 'bg-white', 'dark:bg-slate-800');
+                    this.classList.add('border-cyan-600', 'bg-cyan-50', 'dark:bg-cyan-900/20');
+                    
+                    selectedFrequency = this.id === 'frequency-monthly' ? 'monthly' : 'one-time';
+                    updateDonateButton();
+                    updatePayPalButtons();
+                });
+            });
+            
+            // Handle payment method selection
+            document.querySelectorAll('.payment-method').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all payment method buttons
+                    document.querySelectorAll('.payment-method').forEach(b => {
+                        b.classList.remove('border-cyan-600', 'bg-cyan-50', 'dark:bg-cyan-900/20');
+                        b.classList.add('border-slate-300', 'dark:border-slate-600', 'bg-white', 'dark:bg-slate-800');
+                    });
+                    // Add active class to selected button
+                    this.classList.remove('border-slate-300', 'dark:border-slate-600', 'bg-white', 'dark:bg-slate-800');
+                    this.classList.add('border-cyan-600', 'bg-cyan-50', 'dark:bg-cyan-900/20');
+                    
+                    // Show/hide payment sections
+                    const stripeSection = document.getElementById('stripe-payment-section');
+                    const paypalSection = document.getElementById('paypal-payment-section');
+                    
+                    if (this.id === 'payment-stripe') {
+                        currentPaymentMethod = 'stripe';
+                        stripeSection.classList.remove('hidden');
+                        paypalSection.classList.add('hidden');
+                        updateDonateButton();
+                    } else if (this.id === 'payment-paypal') {
+                        currentPaymentMethod = 'paypal';
+                        stripeSection.classList.add('hidden');
+                        paypalSection.classList.remove('hidden');
+                        // Hide donate button when PayPal is selected (PayPal handles its own buttons)
+                        document.getElementById('donate-btn').classList.add('hidden');
+                        // Reinitialize PayPal buttons when section becomes visible
+                        setTimeout(initializePayPal, 100);
+                    }
+                });
+            });
+            
+            // Handle custom amount input
+            const customAmountInput = document.getElementById('custom-amount');
+            if (customAmountInput) {
+                customAmountInput.addEventListener('input', function() {
+                    const customValue = parseFloat(this.value);
+                    if (customValue && customValue > 0) {
+                        selectedAmount = customValue;
+                        // Remove active class from preset buttons
+                        document.querySelectorAll('.donation-amount').forEach(b => {
+                            b.classList.remove('bg-cyan-600', 'text-white', 'border-cyan-600');
+                            b.classList.add('border-slate-300', 'dark:border-slate-700');
+                        });
+                        updateDonateButton();
+                        updatePayPalButtons();
+                    }
+                });
+            }
+            
+            // Handle anonymous donation checkbox
+            const anonymousCheckbox = document.getElementById('anonymous-donation');
+            const donorNameField = document.getElementById('donor-name');
+            const donorEmailField = document.getElementById('donor-email');
+            
+            if (anonymousCheckbox && donorNameField && donorEmailField) {
+                anonymousCheckbox.addEventListener('change', function() {
+                    if (this.checked) {
+                        // Gray out and disable fields
+                        donorNameField.classList.add('opacity-50', 'cursor-not-allowed');
+                        donorEmailField.classList.add('opacity-50', 'cursor-not-allowed');
+                        donorNameField.disabled = true;
+                        donorEmailField.disabled = true;
+                        donorNameField.removeAttribute('required');
+                        donorEmailField.removeAttribute('required');
+                        // Clear values
+                        donorNameField.value = '';
+                        donorEmailField.value = '';
+                        // Set placeholder text
+                        donorNameField.placeholder = 'Anonymous Donor';
+                        donorEmailField.placeholder = 'No email required';
+                    } else {
+                        // Re-enable fields
+                        donorNameField.classList.remove('opacity-50', 'cursor-not-allowed');
+                        donorEmailField.classList.remove('opacity-50', 'cursor-not-allowed');
+                        donorNameField.disabled = false;
+                        donorEmailField.disabled = false;
+                        donorNameField.setAttribute('required', '');
+                        donorEmailField.setAttribute('required', '');
+                        // Reset placeholders
+                        donorNameField.placeholder = '';
+                        donorEmailField.placeholder = '';
+                    }
+                });
+            }
+            
+            // Handle form submission
+            const donationForm = document.getElementById('donation-form');
+            if (donationForm) {
+                donationForm.addEventListener('submit', handleFormSubmission);
+            }
+            
+            // Initialize PayPal buttons
+            setTimeout(initializePayPal, 1000); // Delay to ensure PayPal SDK loads
+            
+            // Set initial state
+            updateDonateButton();
+            
+            // Set default amount button as active (first one - $25)
+            const defaultAmountBtn = document.querySelector('.donation-amount[data-amount="25"]');
+            if (defaultAmountBtn) {
+                defaultAmountBtn.classList.remove('border-slate-300', 'dark:border-slate-700');
+                defaultAmountBtn.classList.add('bg-cyan-600', 'text-white', 'border-cyan-600');
+            }
+        });
+        
+        // Initialize Stripe Elements
+        function initializeStripe() {
+            try {
+                stripe = Stripe('pk_test_demo_key'); // Replace with your actual publishable key
+                stripeElements = stripe.elements();
+                
+                // Create card element
+                cardElement = stripeElements.create('card', {
+                    style: {
+                        base: {
+                            fontSize: '16px',
+                            color: '#424770',
+                            '::placeholder': {
+                                color: '#aab7c4',
+                            },
+                        },
+                        invalid: {
+                            color: '#9e2146',
+                        },
+                    },
+                });
+                
+                // Mount card element
+                cardElement.mount('#stripe-card-element');
+                
+                // Handle real-time validation errors
+                cardElement.on('change', function(event) {
+                    const displayError = document.getElementById('stripe-card-errors');
+                    if (event.error) {
+                        displayError.textContent = event.error.message;
+                        displayError.classList.remove('hidden');
+                    } else {
+                        displayError.textContent = '';
+                        displayError.classList.add('hidden');
+                    }
+                });
+                
+            } catch (error) {
+                console.log('Stripe initialization failed:', error);
+                showPaymentMessage('Stripe payment not available in demo mode. Form will submit as Netlify form.', 'info');
+            }
+        }
+        
+        // Handle form submission
+        async function handleFormSubmission(event) {
+            event.preventDefault();
+            
+            if (currentPaymentMethod === 'stripe') {
+                await processStripePayment();
+            } else {
+                // This shouldn't happen since PayPal has its own buttons
+                showPaymentMessage('Please use PayPal buttons for PayPal payments.', 'error');
+            }
+        }
+        
+        // Process Stripe payment
+        async function processStripePayment() {
+            const donorName = document.getElementById('donor-name')?.value;
+            const donorEmail = document.getElementById('donor-email')?.value;
+            const isAnonymous = document.getElementById('anonymous-donation')?.checked;
+            
+            // Validate required fields (unless anonymous)
+            if (!isAnonymous && (!donorName || !donorEmail)) {
+                showPaymentMessage('Please fill in your name and email before donating.', 'error');
+                return;
+            }
+            
+            // Show loading state
+            showLoadingState(true);
+            
+            try {
+                // In a real implementation, you would create a payment intent on your server
+                // For demo purposes, we'll simulate the payment process
+                
+                if (stripe && cardElement) {
+                    // Create token for demo (in production, use payment intents)
+                    const {token, error} = await stripe.createToken(cardElement, {
+                        name: isAnonymous ? 'Anonymous Donor' : donorName,
+                        email: isAnonymous ? undefined : donorEmail,
+                    });
+                    
+                    if (error) {
+                        throw new Error(error.message);
+                    }
+                    
+                    // Simulate server processing
+                    await new Promise(resolve => setTimeout(resolve, 2000));
+                    
+                    // Show success
+                    showPaymentSuccess({
+                        amount: selectedAmount,
+                        frequency: selectedFrequency,
+                        method: 'Stripe',
+                        name: isAnonymous ? 'Anonymous Donor' : donorName
+                    });
+                    
+                } else {
+                    // Fallback: Submit as Netlify form
+                    showPaymentMessage('Demo mode: Payment would be processed with Stripe. Submitting as form instead.', 'info');
+                    submitAsNetlifyForm();
+                }
+                
+            } catch (error) {
+                showPaymentError(error.message);
+            } finally {
+                showLoadingState(false);
+            }
+        }
+        
+        // Submit as Netlify form (fallback)
+        function submitAsNetlifyForm() {
+            const form = document.getElementById('donation-form');
+            const formData = new FormData(form);
+            
+            // Add payment details
+            formData.append('amount', selectedAmount);
+            formData.append('frequency', selectedFrequency);
+            formData.append('payment-method', 'stripe-demo');
+            
+            fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(formData).toString()
+            }).then(() => {
+                showPaymentSuccess({
+                    amount: selectedAmount,
+                    frequency: selectedFrequency,
+                    method: 'Form Submission',
+                    name: document.getElementById('donor-name')?.value || 'Anonymous'
+                });
+            }).catch(error => {
+                showPaymentError('Form submission failed: ' + error.message);
+            });
+        }
+        
+        // Update donate button display
+        function updateDonateButton() {
+            const donateBtn = document.getElementById('donate-btn-text');
+            const donateBtnContainer = document.getElementById('donate-btn');
+            
+            if (donateBtn) {
+                donateBtn.textContent = `Donate $${selectedAmount} ${selectedFrequency === 'monthly' ? '/ month' : ''}`;
+            }
+            
+            // Show/hide donate button based on payment method
+            if (donateBtnContainer) {
+                if (currentPaymentMethod === 'paypal') {
+                    donateBtnContainer.classList.add('hidden');
+                } else {
+                    donateBtnContainer.classList.remove('hidden');
+                }
+            }
+        }
+        
+        // Update PayPal buttons
+        function updatePayPalButtons() {
+            if (currentPaymentMethod === 'paypal') {
+                // Reinitialize PayPal with new amount
+                setTimeout(initializePayPal, 100);
+            }
+        }
+        
+        // PayPal payment processing
+        function initializePayPal() {
+            const paypalContainer = document.getElementById('paypal-button-container');
+            if (!paypalContainer || typeof paypal === 'undefined') {
+                console.log('PayPal not available or container not found');
+                return;
+            }
+            
+            // Clear existing PayPal buttons
+            paypalContainer.innerHTML = '';
+            
+            try {
+                paypal.Buttons({
+                    createOrder: function(data, actions) {
+                        const donorName = document.getElementById('donor-name')?.value || 'Anonymous Donor';
+                        const isAnonymous = document.getElementById('anonymous-donation')?.checked;
+                        
+                        return actions.order.create({
+                            purchase_units: [{
+                                amount: {
+                                    value: selectedAmount.toString(),
+                                    currency_code: 'USD'
+                                },
+                                description: `OPANAF Youth Empowerment Donation - ${selectedFrequency}`,
+                                custom_id: `opanaf-${Date.now()}`,
+                                invoice_id: `OPANAF-${Date.now()}`,
+                                soft_descriptor: 'OPANAF Donation'
+                            }],
+                            payer: isAnonymous ? undefined : {
+                                name: {
+                                    given_name: donorName.split(' ')[0] || donorName,
+                                    surname: donorName.split(' ').slice(1).join(' ') || ''
+                                },
+                                email_address: document.getElementById('donor-email')?.value
+                            }
+                        });
+                    },
+                    onApprove: function(data, actions) {
+                        return actions.order.capture().then(function(details) {
+                            console.log('PayPal payment completed:', details);
+                            
+                            // Show success message
+                            showPaymentSuccess({
+                                amount: selectedAmount,
+                                frequency: selectedFrequency,
+                                method: 'PayPal',
+                                name: details.payer.name?.given_name || 'Anonymous Donor',
+                                transactionId: details.id
+                            });
+                            
+                            // Submit form data to Netlify for record keeping
+                            submitDonationRecord(details);
+                        });
+                    },
+                    onError: function(err) {
+                        console.error('PayPal error:', err);
+                        showPaymentError('PayPal payment failed. Please try again or use a different payment method.');
+                    },
+                    onCancel: function(data) {
+                        showPaymentMessage('PayPal payment was cancelled.', 'info');
+                    },
+                    style: {
+                        color: 'blue',
+                        shape: 'rect',
+                        label: 'paypal',
+                        layout: 'vertical',
+                        tagline: false
+                    }
+                }).render('#paypal-button-container');
+            } catch (error) {
+                console.log('PayPal initialization error:', error);
+                showPaymentMessage('PayPal is not available in demo mode.', 'info');
+            }
+        }
+        
+        // Submit donation record to Netlify
+        function submitDonationRecord(paymentDetails) {
+            const form = document.getElementById('donation-form');
+            const formData = new FormData();
+            
+            // Add form fields
+            formData.append('form-name', 'donation');
+            formData.append('donor-name', document.getElementById('donor-name')?.value || 'Anonymous Donor');
+            formData.append('donor-email', document.getElementById('donor-email')?.value || '');
+            formData.append('amount', selectedAmount);
+            formData.append('frequency', selectedFrequency);
+            formData.append('payment-method', currentPaymentMethod);
+            formData.append('message', document.getElementById('donation-message')?.value || '');
+            formData.append('anonymous', document.getElementById('anonymous-donation')?.checked || false);
+            formData.append('transaction-id', paymentDetails?.id || '');
+            formData.append('payment-status', 'completed');
+            formData.append('timestamp', new Date().toISOString());
+            
+            // Submit to Netlify
+            fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(formData).toString()
+            }).then(() => {
+                console.log('Donation record submitted to Netlify');
+            }).catch(error => {
+                console.error('Failed to submit donation record:', error);
+            });
+        }
+        
+        // Show loading state
+        function showLoadingState(loading) {
+            const donateBtn = document.getElementById('donate-btn');
+            const btnText = document.getElementById('donate-btn-text');
+            const btnLoading = document.getElementById('donate-btn-loading');
+            
+            if (loading) {
+                donateBtn.disabled = true;
+                btnText.classList.add('hidden');
+                btnLoading.classList.remove('hidden');
+            } else {
+                donateBtn.disabled = false;
+                btnText.classList.remove('hidden');
+                btnLoading.classList.add('hidden');
+            }
+        }
+        
+        // Show payment success
+        function showPaymentSuccess(details) {
+            const successDiv = document.getElementById('payment-success');
+            const errorDiv = document.getElementById('payment-error');
+            
+            if (successDiv) {
+                successDiv.classList.remove('hidden');
+                errorDiv.classList.add('hidden');
+                
+                // Update success message
+                const successText = successDiv.querySelector('p');
+                if (successText) {
+                    successText.textContent = `Your $${details.amount} ${details.frequency} donation via ${details.method} has been processed successfully. Thank you, ${details.name}!`;
+                }
+                
+                // Reset form
+                document.getElementById('donation-form').reset();
+                resetFormState();
+                
+                // Scroll to success message
+                successDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+        
+        // Show payment error
+        function showPaymentError(message) {
+            const errorDiv = document.getElementById('payment-error');
+            const successDiv = document.getElementById('payment-success');
+            const errorMessage = document.getElementById('payment-error-message');
+            
+            if (errorDiv) {
+                errorDiv.classList.remove('hidden');
+                successDiv.classList.add('hidden');
+                
+                if (errorMessage) {
+                    errorMessage.textContent = message;
+                }
+                
+                // Scroll to error message
+                errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+        
+        // Show general payment messages
+        function showPaymentMessage(message, type) {
+            const messageDiv = document.createElement('div');
+            const bgColor = type === 'success' ? 'bg-green-500' : type === 'error' ? 'bg-red-500' : 'bg-blue-500';
+            messageDiv.className = `fixed top-4 right-4 p-4 rounded-lg z-50 ${bgColor} text-white shadow-lg max-w-sm`;
+            messageDiv.innerHTML = `
+                <div class="flex items-start">
+                    <div class="flex-1">${message}</div>
+                    <button onclick="this.parentElement.parentElement.remove()" class="ml-2 text-white hover:text-gray-200">×</button>
+                </div>
+            `;
+            document.body.appendChild(messageDiv);
+            
+            setTimeout(() => {
+                if (messageDiv.parentElement) {
+                    messageDiv.remove();
+                }
+            }, 6000);
+        }
+        
+        // Reset form state
+        function resetFormState() {
+            // Reset amount selection to default
+            selectedAmount = 25;
+            selectedFrequency = 'one-time';
+            
+            // Reset UI state
+            document.querySelectorAll('.donation-amount').forEach(b => {
+                b.classList.remove('bg-cyan-600', 'text-white', 'border-cyan-600');
+                b.classList.add('border-slate-300', 'dark:border-slate-700');
+            });
+            
+            // Set default amount active
+            const defaultAmountBtn = document.querySelector('.donation-amount[data-amount="25"]');
+            if (defaultAmountBtn) {
+                defaultAmountBtn.classList.remove('border-slate-300', 'dark:border-slate-700');
+                defaultAmountBtn.classList.add('bg-cyan-600', 'text-white', 'border-cyan-600');
+            }
+            
+            // Reset frequency to one-time
+            document.querySelectorAll('.frequency-btn').forEach(b => {
+                b.classList.remove('border-cyan-600', 'bg-cyan-50', 'dark:bg-cyan-900/20');
+                b.classList.add('border-slate-300', 'dark:border-slate-600', 'bg-white', 'dark:bg-slate-800');
+            });
+            
+            const defaultFrequencyBtn = document.getElementById('frequency-once');
+            if (defaultFrequencyBtn) {
+                defaultFrequencyBtn.classList.remove('border-slate-300', 'dark:border-slate-600', 'bg-white', 'dark:bg-slate-800');
+                defaultFrequencyBtn.classList.add('border-cyan-600', 'bg-cyan-50', 'dark:bg-cyan-900/20');
+            }
+            
+            updateDonateButton();
+        }
+    </script>
+</body>
+</html>

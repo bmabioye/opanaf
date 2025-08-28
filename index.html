@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPANAF | Overseas Pan Africanism</title>
+    <meta name="description" content="OPANAF is a Not-For-Profit organization helping Africans and people of African origin actualize their dreams by solving ambiguities surrounding migration, relocation and empowerment.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#ecfeff',
+                            100: '#cffafe',
+                            200: '#a5f3fc',
+                            300: '#67e8f9',
+                            400: '#22d3ee',
+                            500: '#06b6d4',
+                            600: '#0891b2',
+                            700: '#0e7490',
+                            800: '#155e75',
+                            900: '#164e63',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="style.css">
+    
+    <script>
+        // Enhanced theme initialization script
+        (function() {
+            // Function to apply theme
+            function applyTheme() {
+                const theme = localStorage.theme || 
+                    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                
+                const isDark = theme === 'dark';
+                
+                // Remove both classes first, then add the correct one
+                document.documentElement.classList.remove('dark', 'light');
+                document.documentElement.classList.add(theme);
+                document.documentElement.setAttribute('data-theme', theme);
+                
+                // Store theme for consistency
+                localStorage.setItem('theme', theme);
+                
+                console.log(`[THEME INIT] Applied theme: ${theme}`);
+            }
+            
+            // Apply theme immediately
+            applyTheme();
+            
+            // Watch for storage changes (for cross-tab sync)
+            window.addEventListener('storage', function(e) {
+                if (e.key === 'theme') {
+                    applyTheme();
+                }
+            });
+        })();
+    </script>
+
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-200 antialiased">
+
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="relative min-h-[85vh] flex items-center">
+            <div class="absolute inset-0 bg-cover bg-center bg-no-repeat z-0" style="background-image: url('https://images.unsplash.com/photo-1521295121783-8a321d551ad2?q=80&w=2940&auto=format&fit=crop');"></div>
+            <div class="absolute inset-0 bg-slate-900/60 dark:bg-slate-900/70"></div>
+            <div class="container mx-auto px-4 lg:px-8 relative z-10 text-center text-white">
+                <h1 class="text-4xl md:text-6xl font-extrabold mb-4 tracking-tight">A Prosperous & Dignified African Race</h1>
+                <p class="text-lg md:text-xl max-w-3xl mx-auto text-slate-300 mb-8">
+                    We are dedicated to empowering Africans at home and abroad, preventing exploitation, and building a prosperous future for centuries to come.
+                </p>
+                <div class="flex justify-center items-center space-x-4">
+                    <a href="#programs" class="bg-cyan-600 text-white font-semibold px-8 py-3 rounded-full hover:bg-cyan-700 transition-all duration-300 transform hover:scale-105">
+                        Our Programs
+                    </a>
+                    <a href="#about" class="bg-transparent border-2 border-white text-white font-semibold px-8 py-3 rounded-full hover:bg-white hover:text-slate-900 transition-all duration-300">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-20 lg:py-32">
+            <div class="container mx-auto px-4 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                    <div class="fade-in-on-scroll order-2 lg:order-1">
+                        <h2 class="text-3xl lg:text-4xl font-bold mb-4 text-cyan-600 dark:text-cyan-400">Our Mission</h2>
+                        <p class="text-lg mb-6 text-slate-600 dark:text-slate-400">
+                           OPANAF is committed to empowering Africans and people of African origin,
+                           both on the continent and across the diaspora, to realize their aspirations
+                           with dignity and purpose. We work to address the challenges of migration, 
+                           relocation, and employment by removing the uncertainties that often lead to 
+                           disillusionment, exploitation, and hardship.
+
+                        </p>
+                        <p class="text-slate-600 dark:text-slate-400">
+                           Our mission is to prevent Africans from being trapped in poor working conditions,
+                           unsafe environments, or systems of exploitation—including trafficking and 
+                           modern servitude—by creating safe, sustainable, and empowering pathways to opportunity.
+
+                        </p>
+                    </div>
+                    <div class="fade-in-on-scroll order-1 lg:order-2">
+                         <img src="images/empowered.png" alt="Group of empowered people" class="rounded-lg shadow-2xl w-full h-auto object-cover">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="programs" class="py-20 lg:py-32 bg-slate-100 dark:bg-slate-800">
+            <div class="container mx-auto px-4 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl lg:text-4xl font-bold mb-4">Innovative & Impactful Programs</h2>
+                    <p class="text-lg max-w-3xl mx-auto text-slate-600 dark:text-slate-400">Our core objective is to create sustainable solutions that mitigate brain drain and empower Africans globally.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <a href="skill-acquisition.html" class="fade-in-on-scroll block bg-white dark:bg-slate-900 p-8 rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                        <div class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                            <i data-lucide="sparkles" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Skill Acquisition</h3>
+                        <p class="text-slate-600 dark:text-slate-400">Providing access to high-demand digital and vocational skills for the global market.</p>
+                    </a>
+                    <a href="job-placement.html" class="fade-in-on-scroll block bg-white dark:bg-slate-900 p-8 rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300" style="transition-delay: 100ms;">
+                        <div class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                            <i data-lucide="briefcase" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Job Placement & Training</h3>
+                        <p class="text-slate-600 dark:text-slate-400">Connecting qualified individuals with meaningful employment and providing necessary training.</p>
+                    </a>
+                    <a href="youth-empowerment.html" class="fade-in-on-scroll block bg-white dark:bg-slate-900 p-8 rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300" style="transition-delay: 200ms;">
+                        <div class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                            <i data-lucide="users" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Youth Empowerment</h3>
+                        <p class="text-slate-600 dark:text-slate-400">Targeted initiatives for youth aged 15-25 to foster development and support.</p>
+                    </a>
+                     <div class="fade-in-on-scroll bg-white dark:bg-slate-900 p-8 rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                        <div class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                            <i data-lucide="trending-up" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Personal & Career Development</h3>
+                        <p class="text-slate-600 dark:text-slate-400">Guiding individuals on a path of continuous growth, both personally and professionally.</p>
+                    </div>
+                     <div class="fade-in-on-scroll bg-white dark:bg-slate-900 p-8 rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300" style="transition-delay: 100ms;">
+                        <div class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                            <i data-lucide="heart-handshake" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Mentorship & Support</h3>
+                        <p class="text-slate-600 dark:text-slate-400">Building a strong support network through mentorship from experienced professionals.</p>
+                    </div>
+                     <a href="relocation-support.html" class="fade-in-on-scroll block bg-white dark:bg-slate-900 p-8 rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300" style="transition-delay: 200ms;">
+                        <div class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                            <i data-lucide="plane" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Relocation & Repatriation</h3>
+                        <p class="text-slate-600 dark:text-slate-400">Assisting with informed emigration decisions and supporting those who wish to return home.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="impact" class="py-20 lg:py-32">
+             <div class="container mx-auto px-4 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl lg:text-4xl font-bold mb-4">Our Measurable Impact</h2>
+                    <p class="text-lg max-w-3xl mx-auto text-slate-600 dark:text-slate-400">We are committed to tangible outcomes. These are the goals that drive our every action.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8 text-center">
+                    <div class="fade-in-on-scroll bg-slate-100 dark:bg-slate-800 p-8 rounded-lg">
+                        <h3 class="text-5xl font-extrabold text-cyan-600 dark:text-cyan-400 mb-2">500M</h3>
+                        <p class="text-lg font-semibold">Lives Impacted</p>
+                        <p class="text-slate-600 dark:text-slate-400">Our aim is to positively and directly impact half a billion individuals.</p>
+                    </div>
+                    <div class="fade-in-on-scroll bg-slate-100 dark:bg-slate-800 p-8 rounded-lg" style="transition-delay: 100ms;">
+                        <h3 class="text-5xl font-extrabold text-cyan-600 dark:text-cyan-400 mb-2">50%</h3>
+                        <p class="text-lg font-semibold">Less Modern Slavery</p>
+                        <p class="text-slate-600 dark:text-slate-400">To reduce the number of Africans in modern slavery overseas in 10 years.</p>
+                    </div>
+                    <div class="fade-in-on-scroll bg-slate-100 dark:bg-slate-800 p-8 rounded-lg" style="transition-delay: 200ms;">
+                        <h3 class="text-5xl font-extrabold text-cyan-600 dark:text-cyan-400 mb-2">2,500+</h3>
+                        <p class="text-lg font-semibold">Communities Served</p>
+                        <p class="text-slate-600 dark:text-slate-400">Targeting communities across Africa with youth empowerment by 2034.</p>
+                    </div>
+                </div>
+             </div>
+        </section>
+        
+        <section id="contact" class="bg-cyan-600">
+            <div class="container mx-auto px-4 lg:px-8 py-20 lg:py-24 text-center">
+                <h2 class="text-3xl lg:text-4xl font-bold text-white mb-4">Ready to Make a Difference?</h2>
+                <p class="text-lg text-cyan-100 max-w-2xl mx-auto mb-8">Join us in our mission to uplift, empower, and restore the dignity of the African people worldwide. Whether you want to volunteer, partner, or donate, your support is crucial.</p>
+                <button class="join-us-btn bg-white text-cyan-600 font-bold px-8 py-4 rounded-full hover:bg-slate-100 transition-all duration-300 transform hover:scale-105">
+                    Get Involved Today
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPANAF - Payment Test</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            50: '#f8fafc',
+                            900: '#0f172a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Payment Processing Scripts -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=demo_client_id&currency=USD&components=buttons"></script>
+</head>
+<body class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white transition-colors duration-300">
+    <div class="min-h-screen py-8">
+        <div class="container mx-auto px-4 max-w-2xl">
+            <h1 class="text-3xl font-bold text-center mb-8">Payment System Test</h1>
+            
+            <!-- Theme Toggle Test -->
+            <div class="text-center mb-8">
+                <button id="theme-toggle" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors">
+                    Toggle Theme
+                </button>
+                <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">Current theme: <span id="current-theme">light</span></p>
+            </div>
+            
+            <!-- Payment Amount Selection -->
+            <div class="bg-slate-100 dark:bg-slate-800 p-6 rounded-lg mb-6">
+                <h3 class="text-xl font-semibold mb-4">Select Donation Amount</h3>
+                <div class="grid grid-cols-3 gap-3 mb-4">
+                    <button class="donation-amount border border-slate-300 dark:border-slate-700 py-3 px-4 rounded-lg hover:bg-cyan-600 hover:text-white hover:border-cyan-600 transition-colors" data-amount="25">$25</button>
+                    <button class="donation-amount bg-cyan-600 text-white border-cyan-600 py-3 px-4 rounded-lg hover:bg-cyan-700 transition-colors" data-amount="50">$50</button>
+                    <button class="donation-amount border border-slate-300 dark:border-slate-700 py-3 px-4 rounded-lg hover:bg-cyan-600 hover:text-white hover:border-cyan-600 transition-colors" data-amount="100">$100</button>
+                </div>
+                <input type="number" id="custom-amount" placeholder="Custom amount" class="w-full px-4 py-3 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg">
+                
+                <!-- Anonymous donation test -->
+                <div class="mt-4">
+                    <label class="flex items-start">
+                        <input type="checkbox" id="anonymous-donation" class="mt-1 w-4 h-4 text-cyan-600 bg-slate-100 border-slate-300 rounded focus:ring-cyan-500">
+                        <span class="ml-2 text-sm text-slate-600 dark:text-slate-400">Make this donation anonymous</span>
+                    </label>
+                </div>
+                
+                <!-- Test fields -->
+                <div class="mt-4 space-y-3">
+                    <input type="text" id="donor-name" placeholder="Your Name" required class="w-full px-4 py-3 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg">
+                    <input type="email" id="donor-email" placeholder="Your Email" required class="w-full px-4 py-3 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg">
+                </div>
+            </div>
+            
+            <!-- Payment Methods -->
+            <div class="bg-slate-100 dark:bg-slate-800 p-6 rounded-lg">
+                <h3 class="text-xl font-semibold mb-4">Payment Methods</h3>
+                
+                <!-- Stripe Button -->
+                <button id="stripe-donate-btn" class="w-full bg-blue-600 text-white py-4 px-6 rounded-lg hover:bg-blue-700 transition-colors mb-4">
+                    Donate $50 with Card (Stripe)
+                </button>
+                
+                <!-- PayPal Container -->
+                <div id="paypal-button-container" class="mb-4"></div>
+                
+                <!-- Status Display -->
+                <div id="payment-status" class="text-center text-sm text-slate-600 dark:text-slate-400">
+                    Ready to process payments
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Theme management
+        let currentTheme = localStorage.getItem('theme') || 'light';
+        
+        function updateThemeDisplay() {
+            document.getElementById('current-theme').textContent = currentTheme;
+            document.documentElement.classList.remove('dark', 'light');
+            document.documentElement.classList.add(currentTheme);
+        }
+        
+        document.getElementById('theme-toggle').addEventListener('click', function() {
+            currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+            localStorage.setItem('theme', currentTheme);
+            updateThemeDisplay();
+        });
+        
+        // Payment functionality
+        let selectedAmount = 50;
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            updateThemeDisplay();
+            
+            // Amount selection
+            document.querySelectorAll('.donation-amount').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.donation-amount').forEach(b => {
+                        b.classList.remove('bg-cyan-600', 'text-white', 'border-cyan-600');
+                        b.classList.add('border-slate-300', 'dark:border-slate-700');
+                    });
+                    this.classList.remove('border-slate-300', 'dark:border-slate-700');
+                    this.classList.add('bg-cyan-600', 'text-white', 'border-cyan-600');
+                    selectedAmount = parseInt(this.dataset.amount);
+                    updatePaymentButtons();
+                });
+            });
+            
+            // Custom amount
+            document.getElementById('custom-amount').addEventListener('input', function() {
+                const value = parseFloat(this.value);
+                if (value > 0) {
+                    selectedAmount = value;
+                    document.querySelectorAll('.donation-amount').forEach(b => {
+                        b.classList.remove('bg-cyan-600', 'text-white', 'border-cyan-600');
+                        b.classList.add('border-slate-300', 'dark:border-slate-700');
+                    });
+                    updatePaymentButtons();
+                }
+            });
+            
+            // Anonymous donation functionality
+            const anonymousCheckbox = document.getElementById('anonymous-donation');
+            const donorNameField = document.getElementById('donor-name');
+            const donorEmailField = document.getElementById('donor-email');
+            
+            anonymousCheckbox.addEventListener('change', function() {
+                if (this.checked) {
+                    // Gray out and disable fields
+                    donorNameField.classList.add('opacity-50', 'cursor-not-allowed');
+                    donorEmailField.classList.add('opacity-50', 'cursor-not-allowed');
+                    donorNameField.disabled = true;
+                    donorEmailField.disabled = true;
+                    donorNameField.removeAttribute('required');
+                    donorEmailField.removeAttribute('required');
+                    // Clear values
+                    donorNameField.value = '';
+                    donorEmailField.value = '';
+                    // Set placeholder text
+                    donorNameField.placeholder = 'Anonymous Donor';
+                    donorEmailField.placeholder = 'No email required';
+                } else {
+                    // Re-enable fields
+                    donorNameField.classList.remove('opacity-50', 'cursor-not-allowed');
+                    donorEmailField.classList.remove('opacity-50', 'cursor-not-allowed');
+                    donorNameField.disabled = false;
+                    donorEmailField.disabled = false;
+                    donorNameField.setAttribute('required', '');
+                    donorEmailField.setAttribute('required', '');
+                    // Reset placeholders
+                    donorNameField.placeholder = 'Your Name';
+                    donorEmailField.placeholder = 'Your Email';
+                }
+            });
+            
+            // Stripe payment
+            document.getElementById('stripe-donate-btn').addEventListener('click', function() {
+                document.getElementById('payment-status').innerHTML = `
+                    <div class="text-green-600 dark:text-green-400">
+                        ✅ Demo: Stripe payment of $${selectedAmount} would be processed here!
+                    </div>
+                `;
+            });
+            
+            // Initialize PayPal
+            setTimeout(initializePayPal, 1000);
+        });
+        
+        function updatePaymentButtons() {
+            document.getElementById('stripe-donate-btn').textContent = `Donate $${selectedAmount} with Card (Stripe)`;
+        }
+        
+        function initializePayPal() {
+            if (typeof paypal !== 'undefined') {
+                paypal.Buttons({
+                    createOrder: function(data, actions) {
+                        return actions.order.create({
+                            purchase_units: [{
+                                amount: { value: selectedAmount.toString() }
+                            }]
+                        });
+                    },
+                    onApprove: function(data, actions) {
+                        return actions.order.capture().then(function(details) {
+                            document.getElementById('payment-status').innerHTML = `
+                                <div class="text-green-600 dark:text-green-400">
+                                    ✅ PayPal payment successful! Order ID: ${data.orderID}
+                                </div>
+                            `;
+                        });
+                    },
+                    onError: function(err) {
+                        document.getElementById('payment-status').innerHTML = `
+                            <div class="text-red-600 dark:text-red-400">
+                                ❌ PayPal payment failed
+                            </div>
+                        `;
+                    }
+                }).render('#paypal-button-container');
+            }
+        }
+    </script>
+</body>
+</html>

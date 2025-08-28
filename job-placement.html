@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Placement Program | OPANAF</title>
+    <meta name="description" content="OPANAF's Job Placement Program connects qualified Africans with meaningful employment opportunities worldwide while providing necessary training and support.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#ecfeff',
+                            100: '#cffafe',
+                            200: '#a5f3fc',
+                            300: '#67e8f9',
+                            400: '#22d3ee',
+                            500: '#06b6d4',
+                            600: '#0891b2',
+                            700: '#0e7490',
+                            800: '#155e75',
+                            900: '#164e63',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <script>
+        // Enhanced theme initialization script
+        (function() {
+            // Function to apply theme
+            function applyTheme() {
+                const theme = localStorage.theme || 
+                    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                
+                // Remove both classes first, then add the correct one
+                document.documentElement.classList.remove('dark', 'light');
+                document.documentElement.classList.add(theme);
+                document.documentElement.setAttribute('data-theme', theme);
+                
+                // Store theme for consistency
+                localStorage.setItem('theme', theme);
+                
+                console.log(`[THEME INIT] Applied theme: ${theme}`);
+            }
+            
+            // Apply theme immediately
+            applyTheme();
+            
+            // Watch for storage changes (for cross-tab sync)
+            window.addEventListener('storage', function(e) {
+                if (e.key === 'theme') {
+                    applyTheme();
+                }
+            });
+        })();
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-200 antialiased">
+
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="relative py-20 lg:py-32">
+            <div class="absolute inset-0 bg-gradient-to-r from-cyan-600/10 to-slate-100 dark:from-cyan-900/10 dark:to-slate-900/50 -z-10"></div>
+            <div class="container mx-auto px-4 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="fade-in-on-scroll">
+                        <span class="inline-block px-4 py-2 bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 rounded-full text-sm font-semibold mb-4">Career Development</span>
+                        <h1 class="text-4xl lg:text-5xl font-extrabold mb-6">Job Placement Program</h1>
+                        <p class="text-lg lg:text-xl text-slate-600 dark:text-slate-400 mb-8 max-w-2xl">
+                            Connecting qualified Africans with meaningful employment opportunities worldwide while providing the necessary training and support to ensure long-term career success.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="#apply" class="bg-cyan-600 text-white font-semibold px-6 py-3 rounded-full hover:bg-cyan-700 transition-all duration-300 transform hover:scale-105">
+                                Apply Now
+                            </a>
+                            <a href="#employers" class="bg-transparent border-2 border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 font-semibold px-6 py-3 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-300">
+                                For Employers
+                            </a>
+                        </div>
+                    </div>
+                    <div class="fade-in-on-scroll order-first lg:order-last" style="transition-delay: 100ms;">
+                        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2938&auto=format&fit=crop" alt="Professional team meeting" class="rounded-xl shadow-2xl w-full h-auto object-cover">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 lg:py-24 bg-slate-100 dark:bg-slate-800">
+            <div class="container mx-auto px-4 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="fade-in-on-scroll text-3xl lg:text-4xl font-bold mb-4">Our Job Placement Advantage</h2>
+                    <p class="fade-in-on-scroll text-lg max-w-3xl mx-auto text-slate-600 dark:text-slate-400">We go beyond traditional recruitment to create lasting career solutions for Africans worldwide.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="fade-in-on-scroll bg-white dark:bg-slate-900 p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+                        <div class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 w-14 h-14 rounded-full flex items-center justify-center mb-6">
+                            <i data-lucide="network" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Global Employer Network</h3>
+                        <p class="text-slate-600 dark:text-slate-400">Access to vetted employers across Africa, Middle East, Europe, and North America committed to fair employment practices.</p>
+                    </div>
+                    <div class="fade-in-on-scroll bg-white dark:bg-slate-900 p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300" style="transition-delay: 100ms;">
+                        <div class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 w-14 h-14 rounded-full flex items-center justify-center mb-6">
+                            <i data-lucide="shield-check" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Exploitation Prevention</h3>
+                        <p class="text-slate-600 dark:text-slate-400">Rigorous vetting of all employers to prevent modern slavery and ensure fair wages and working conditions.</p>
+                    </div>
+                    <div class="fade-in-on-scroll bg-white dark:bg-slate-900 p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300" style="transition-delay: 200ms;">
+                        <div class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 w-14 h-14 rounded-full flex items-center justify-center mb-6">
+                            <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Pre-Employment Training</h3>
+                        <p class="text-slate-600 dark:text-slate-400">Customized training to prepare candidates for specific roles and cultural adaptation in their new work environment.</p>
+                    </div>
+                    <div class="fade-in-on-scroll bg-white dark:bg-slate-900 p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+                        <div class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 w-14 h-14 rounded-full flex items-center justify-center mb-6">
+                            <i data-lucide="handshake" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">BBBBlack Initiative</h3>
+                        <p class="text-slate-600 dark:text-slate-400">Verified database of qualified African professionals for employers seeking top talent across various industries.</p>
+                    </div>
+                    <div class="fade-in-on-scroll bg-white dark:bg-slate-900 p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300" style="transition-delay: 100ms;">
+                        <div class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 w-14 h-14 rounded-full flex items-center justify-center mb-6">
+                            <i data-lucide="globe" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Diaspora Opportunities</h3>
+                        <p class="text-slate-600 dark:text-slate-400">Special focus on connecting qualified Africans with opportunities in UAE, Saudi Arabia, Qatar, Europe and North America.</p>
+                    </div>
+                    <div class="fade-in-on-scroll bg-white dark:bg-slate-900 p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300" style="transition-delay: 200ms;">
+                        <div class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 w-14 h-14 rounded-full flex items-center justify-center mb-6">
+                            <i data-lucide="heart-handshake" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Post-Placement Support</h3>
+                        <p class="text-slate-600 dark:text-slate-400">Ongoing support for both employees and employers to ensure successful long-term placements.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 lg:py-24">
+            <div class="container mx-auto px-4 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="fade-in-on-scroll text-3xl lg:text-4xl font-bold mb-4">Our Job Placement Process</h2>
+                    <p class="fade-in-on-scroll text-lg max-w-3xl mx-auto text-slate-600 dark:text-slate-400">A structured approach to ensure successful matches between candidates and employers.</p>
+                </div>
+                
+                <div class="max-w-4xl mx-auto">
+                    <div class="fade-in-on-scroll flex flex-col md:flex-row gap-8 mb-12">
+                        <div class="md:w-1/3 text-center md:text-right">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-cyan-600 text-white rounded-full text-2xl font-bold mb-4 md:mx-auto md:ml-auto">1</div>
+                            <h3 class="text-xl font-bold mb-2">Candidate Registration</h3>
+                        </div>
+                        <div class="md:w-2/3 bg-white dark:bg-slate-900 p-8 rounded-xl shadow-lg">
+                            <p class="text-slate-600 dark:text-slate-400 mb-4">Complete our comprehensive profile including skills, qualifications, work experience, and career aspirations. All candidates undergo initial screening.</p>
+                            <ul class="space-y-2 text-slate-600 dark:text-slate-400">
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Detailed skills assessment</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Career counseling session</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Document verification</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="fade-in-on-scroll flex flex-col md:flex-row gap-8 mb-12">
+                        <div class="md:w-1/3 text-center md:text-right">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-cyan-600 text-white rounded-full text-2xl font-bold mb-4 md:mx-auto md:ml-auto">2</div>
+                            <h3 class="text-xl font-bold mb-2">Skill Enhancement</h3>
+                        </div>
+                        <div class="md:w-2/3 bg-white dark:bg-slate-900 p-8 rounded-xl shadow-lg">
+                            <p class="text-slate-600 dark:text-slate-400 mb-4">Based on assessment, candidates receive targeted training to bridge any skill gaps and prepare for specific roles in our employer network.</p>
+                            <ul class="space-y-2 text-slate-600 dark:text-slate-400">
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Technical skill workshops</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Cultural orientation programs</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Language training if needed</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Interview preparation</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="fade-in-on-scroll flex flex-col md:flex-row gap-8 mb-12">
+                        <div class="md:w-1/3 text-center md:text-right">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-cyan-600 text-white rounded-full text-2xl font-bold mb-4 md:mx-auto md:ml-auto">3</div>
+                            <h3 class="text-xl font-bold mb-2">Employer Matching</h3>
+                        </div>
+                        <div class="md:w-2/3 bg-white dark:bg-slate-900 p-8 rounded-xl shadow-lg">
+                            <p class="text-slate-600 dark:text-slate-400 mb-4">Our matching algorithm and human experts connect candidates with suitable opportunities based on skills, experience, and preferences.</p>
+                            <ul class="space-y-2 text-slate-600 dark:text-slate-400">
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Comprehensive employer vetting</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Transparent job descriptions</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Fair wage benchmarking</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="fade-in-on-scroll flex flex-col md:flex-row gap-8">
+                        <div class="md:w-1/3 text-center md:text-right">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-cyan-600 text-white rounded-full text-2xl font-bold mb-4 md:mx-auto md:ml-auto">4</div>
+                            <h3 class="text-xl font-bold mb-2">Ongoing Support</h3>
+                        </div>
+                        <div class="md:w-2/3 bg-white dark:bg-slate-900 p-8 rounded-xl shadow-lg">
+                            <p class="text-slate-600 dark:text-slate-400 mb-4">We provide continuous support to ensure successful integration and career growth for placed candidates.</p>
+                            <ul class="space-y-2 text-slate-600 dark:text-slate-400">
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Regular check-ins</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Career advancement resources</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Conflict resolution assistance</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Access to BBBBlack professional network</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="employers" class="py-16 lg:py-24 bg-slate-100 dark:bg-slate-800">
+            <div class="container mx-auto px-4 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="fade-in-on-scroll">
+                        <h2 class="text-3xl lg:text-4xl font-bold mb-6">For Employers</h2>
+                        <p class="text-lg text-slate-600 dark:text-slate-400 mb-8">Access pre-vetted, qualified African professionals through our BBBBlack initiative and ethical recruitment process.</p>
+                        
+                        <div class="space-y-6 mb-8">
+                            <div class="flex items-start">
+                                <div class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 p-3 rounded-lg mr-4">
+                                    <i data-lucide="users" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">Verified Talent Pool</h4>
+                                    <p class="text-slate-600 dark:text-slate-400">Access to 5 million+ verified African professionals across various industries through our BBBBlack database.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 p-3 rounded-lg mr-4">
+                                    <i data-lucide="shield" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">Ethical Recruitment</h4>
+                                    <p class="text-slate-600 dark:text-slate-400">We ensure all placements meet international labor standards and fair wage requirements.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 p-3 rounded-lg mr-4">
+                                    <i data-lucide="zap" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">Reduced Turnover</h4>
+                                    <p class="text-slate-600 dark:text-slate-400">Our comprehensive support system leads to higher employee retention rates.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <a href="#employer-form" class="inline-flex items-center bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 font-semibold px-6 py-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-all shadow-md">
+                            Request Talent
+                            <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="fade-in-on-scroll bg-white dark:bg-slate-900 p-8 rounded-xl shadow-lg" style="transition-delay: 100ms;">
+                        <h3 class="text-2xl font-bold mb-6">Employer Benefits</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-slate-100 dark:bg-slate-800 p-3 rounded-lg mr-4">
+                                    <i data-lucide="badge-percent" class="w-6 h-6 text-cyan-600 dark:text-cyan-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">Cost-Effective Hiring</h4>
+                                    <p class="text-slate-600 dark:text-slate-400">Lower recruitment costs compared to traditional agencies with our not-for-profit model.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-slate-100 dark:bg-slate-800 p-3 rounded-lg mr-4">
+                                    <i data-lucide="clock" class="w-6 h-6 text-cyan-600 dark:text-cyan-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">Faster Placements</h4>
+                                    <p class="text-slate-600 dark:text-slate-400">Our pre-vetted candidates reduce time-to-hire by up to 60%.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-slate-100 dark:bg-slate-800 p-3 rounded-lg mr-4">
+                                    <i data-lucide="globe" class="w-6 h-6 text-cyan-600 dark:text-cyan-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">Diverse Talent</h4>
+                                    <p class="text-slate-600 dark:text-slate-400">Build a more inclusive workforce with qualified professionals from across Africa.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-slate-100 dark:bg-slate-800 p-3 rounded-lg mr-4">
+                                    <i data-lucide="heart-handshake" class="w-6 h-6 text-cyan-600 dark:text-cyan-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">CSR Alignment</h4>
+                                    <p class="text-slate-600 dark:text-slate-400">Demonstrate commitment to ethical employment and social impact initiatives.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 lg:py-24">
+            <div class="container mx-auto px-4 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="fade-in-on-scroll text-3xl lg:text-4xl font-bold mb-4">Placement Success Stories</h2>
+                    <p class="fade-in-on-scroll text-lg max-w-3xl mx-auto text-slate-600 dark:text-slate-400">Hear from individuals and employers who have benefited from our job placement program.</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="fade-in-on-scroll bg-slate-100 dark:bg-slate-800 p-8 rounded-xl">
+                        <div class="flex items-center mb-6">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Amina" class="w-14 h-14 rounded-full object-cover mr-4">
+                            <div>
+                                <h4 class="font-bold">Amina K.</h4>
+                                <p class="text-sm text-slate-500 dark:text-slate-400">Registered Nurse in Dubai</p>
+                            </div>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400 mb-4">"After struggling to find legitimate opportunities abroad, OPANAF connected me with a reputable hospital in Dubai. Their pre-departure training prepared me for the cultural transition, and their ongoing support helped me adjust to my new role. I now earn 4x my previous salary in Nigeria."</p>
+                        <div class="flex items-center text-sm text-slate-500 dark:text-slate-400">
+                            <i data-lucide="map-pin" class="w-4 h-4 mr-1"></i>
+                            <span>From Lagos, Nigeria to Dubai, UAE</span>
+                        </div>
+                    </div>
+                    
+                    <div class="fade-in-on-scroll bg-slate-100 dark:bg-slate-800 p-8 rounded-xl" style="transition-delay: 100ms;">
+                        <div class="flex items-center mb-6">
+                            <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Mohammed" class="w-14 h-14 rounded-full object-cover mr-4">
+                            <div>
+                                <h4 class="font-bold">Mohammed A.</h4>
+                                <p class="text-sm text-slate-500 dark:text-slate-400">Hospital Administrator, Riyadh</p>
+                            </div>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400 mb-4">"Through OPANAF's BBBBlack initiative, we've recruited 12 qualified nurses from Ghana and Nigeria. The thorough vetting and pre-employment training they provide has resulted in higher retention rates compared to other recruitment channels. We appreciate their ethical approach to international hiring."</p>
+                        <div class="flex items-center text-sm text-slate-500 dark:text-slate-400">
+                            <i data-lucide="building-2" class="w-4 h-4 mr-1"></i>
+                            <span>King Fahad Medical Center, Riyadh</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-12 text-center">
+                    <a href="#" class="inline-flex items-center text-cyan-600 dark:text-cyan-400 font-medium hover:underline">
+                        View more success stories
+                        <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="apply-cta" class="py-16 lg:py-24 bg-cyan-600">
+            <div class="container mx-auto px-4 lg:px-8">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-3xl lg:text-4xl font-bold text-white mb-6">Ready to Transform Your Career?</h2>
+                    <p class="text-lg text-cyan-100 mb-8">Join thousands of Africans who have found meaningful employment through our ethical placement program. Whether you're seeking local or international opportunities, we're here to help.</p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <a href="#candidate-form" class="bg-white text-cyan-600 font-semibold px-8 py-4 rounded-full hover:bg-slate-100 transition-all duration-300 transform hover:scale-105">
+                            Apply as Candidate
+                        </a>
+                        <a href="#employer-form" class="bg-transparent border-2 border-white text-white font-semibold px-8 py-4 rounded-full hover:bg-white hover:text-cyan-600 transition-all duration-300">
+                            Hire Talent
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="apply" class="py-16 lg:py-24 bg-slate-100 dark:bg-slate-800">
+            <div class="container mx-auto px-4 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-12">
+                    <div id="candidate-form" class="fade-in-on-scroll bg-white dark:bg-slate-900 p-8 rounded-xl shadow-lg">
+                        <h3 class="text-2xl font-bold mb-6">Candidate Application</h3>
+                        <form name="candidate-application" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" enctype="multipart/form-data" class="space-y-6">
+                            <input type="hidden" name="form-name" value="candidate-application">
+                            <div class="hidden">
+                                <label>Don't fill this out if you're human: <input name="bot-field"></label>
+                            </div>
+                            <div>
+                                <label for="candidate-name" class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Full Name</label>
+                                <input type="text" name="name" id="candidate-name" required class="w-full px-4 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500">
+                            </div>
+                            
+                            <div>
+                                <label for="candidate-email" class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Email Address</label>
+                                <input type="email" name="email" id="candidate-email" required class="w-full px-4 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500">
+                            </div>
+                            
+                            <div>
+                                <label for="candidate-phone" class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Phone Number</label>
+                                <input type="tel" name="phone" id="candidate-phone" required class="w-full px-4 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500">
+                            </div>
+                            
+                            <div>
+                                <label for="candidate-location" class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Current Location</label>
+                                <select name="location" id="candidate-location" required class="w-full px-4 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500">
+                                    <option value="">Select your country</option>
+                                    <option value="nigeria">Nigeria</option>
+                                    <option value="ghana">Ghana</option>
+                                    <option value="kenya">Kenya</option>
+                                    <option value="south-africa">South Africa</option>
+                                    <option value="other-africa">Other African Country</option>
+                                    <option value="uae">UAE</option>
+                                    <option value="saudi-arabia">Saudi Arabia</option>
+                                    <option value="other">Other Location</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label for="candidate-profession" class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Profession</label>
+                                <input type="text" name="profession" id="candidate-profession" required class="w-full px-4 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500" placeholder="e.g., Nurse, Software Developer, Electrician">
+                            </div>
+                            
+                            <div>
+                                <label for="candidate-experience" class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Years of Experience</label>
+                                <select name="experience" id="candidate-experience" required class="w-full px-4 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500">
+                                    <option value="">Select experience level</option>
+                                    <option value="0-2">0-2 years</option>
+                                    <option value="3-5">3-5 years</option>
+                                    <option value="6-10">6-10 years</option>
+                                    <option value="10+">10+ years</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label for="candidate-preferences" class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Job Preferences</label>
+                                <textarea name="preferences" id="candidate-preferences" rows="3" class="w-full px-4 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500" placeholder="Preferred locations, job types, salary expectations, etc."></textarea>
+                            </div>
+                            
+                            <div>
+                                <label for="candidate-resume" class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Upload Resume/CV</label>
+                                <input type="file" name="resume" id="candidate-resume" accept=".pdf,.doc,.docx" class="w-full px-4 py-2 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500">
+                                <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">PDF, DOC, or DOCX (Max 5MB)</p>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex items-center h-5">
+                                    <input id="candidate-consent" name="consent" type="checkbox" required class="w-4 h-4 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded focus:ring-cyan-500">
+                                </div>
+                                <div class="ml-3 text-sm">
+                                    <label for="candidate-consent" class="font-medium text-slate-600 dark:text-slate-300">I consent to OPANAF processing my data for job placement purposes</label>
+                                    <p class="text-slate-500 dark:text-slate-400">We'll never share your information without your permission.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-6">
+                                <button type="submit" class="w-full bg-cyan-600 text-white font-semibold px-6 py-4 rounded-lg hover:bg-cyan-700 transition-all duration-300">
+                                    Submit Application
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <div id="employer-form" class="fade-in-on-scroll bg-white dark:bg-slate-900 p-8 rounded-xl shadow-lg" style="transition-delay: 100ms;">
+                        <h3 class="text-2xl font-bold mb-6">Employer Inquiry</h3>
+                        <form name="employer-inquiry" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="space-y-6">
+                            <input type="hidden" name="form-name" value="employer-inquiry">
+                            <div class="hidden">
+                                <label>Don't fill this out if you're human: <input name="bot-field"></label>
+                            </div>
+                            <div>
+                                <label for="employer-name" class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Company Name</label>
+                                <input type="text" name="company" id="employer-name" required class="w-full px-4 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500">
+                            </div>
+                            
+                            <div>
+                                <label for="employer-contact" class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Contact Person</label>
+                                <input type="text" name="contact" id="employer-contact" required class="w-full px-4 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500">
+                            </div>
+                            
+                            <div>
+                                <label for="employer-email" class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Email Address</label>
+                                <input type="email" name="email" id="employer-email" required class="w-full px-4 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500">
+                            </div>
+                            
+                            <div>
+                                <label for="employer-phone" class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Phone Number</label>
+                                <input type="tel" name="phone" id="employer-phone" required class="w-full px-4 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500">
+                            </div>
+                            
+                            <div>
+                                <label for="employer-location" class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Company Location</label>
+                                <select name="location" id="employer-location" required class="w-full px-4 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500">
+                                    <option value="">Select country</option>
+                                    <option value="uae">United Arab Emirates</option>
+                                    <option value="saudi-arabia">Saudi Arabia</option>
+                                    <option value="qatar">Qatar</option>
+                                    <option value="kuwait">Kuwait</option>
+                                    <option value="nigeria">Nigeria</option>
+                                    <option value="ghana">Ghana</option>
+                                    <option value="south-africa">South Africa</option>
+                                    <option value="usa">United States</option>
+                                    <option value="uk">United Kingdom</option>
+                                    <option value="canada">Canada</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label for="employer-industry" class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Industry</label>
+                                <select name="industry" id="employer-industry" required class="w-full px-4 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500">
+                                    <option value="">Select industry</option>
+                                    <option value="healthcare">Healthcare</option>
+                                    <option value="technology">Technology</option>
+                                    <option value="construction">Construction</option>
+                                    <option value="hospitality">Hospitality</option>
+                                    <option value="education">Education</option>
+                                    <option value="manufacturing">Manufacturing</option>
+                                    <option value="finance">Finance</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label for="employer-needs" class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Talent Needs</label>
+                                <textarea name="needs" id="employer-needs" rows="3" class="w-full px-4 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500" placeholder="Positions needed, qualifications required, number of openings, etc." required></textarea>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex items-center h-5">
+                                    <input id="employer-consent" name="consent" type="checkbox" required class="w-4 h-4 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded focus:ring-cyan-500">
+                                </div>
+                                <div class="ml-3 text-sm">
+                                    <label for="employer-consent" class="font-medium text-slate-600 dark:text-slate-300">I agree to OPANAF's ethical recruitment standards</label>
+                                    <p class="text-slate-500 dark:text-slate-400">By checking this, you confirm you'll provide fair wages and working conditions.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-6">
+                                <button type="submit" class="w-full bg-cyan-600 text-white font-semibold px-6 py-4 rounded-lg hover:bg-cyan-700 transition-all duration-300">
+                                    Request Talent
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 lg:py-24">
+            <div class="container mx-auto px-4 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="fade-in-on-scroll text-3xl lg:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
+                    <p class="fade-in-on-scroll text-lg max-w-3xl mx-auto text-slate-600 dark:text-slate-400">Find answers to common questions about our Job Placement Program.</p>
+                </div>
+                
+                <div class="fade-in-on-scroll max-w-3xl mx-auto space-y-4">
+                    <div class="border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                            <span class="text-lg font-medium">Is there a fee for candidates to use your job placement services?</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 transform transition-transform"></i>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-6 pt-0">
+                            <p class="text-slate-600 dark:text-slate-400">No, OPANAF is a not-for-profit organization. Our job placement services are completely free for candidates. All revenue from employer partnerships is channeled back into our mission to empower Africans through skill development and ethical employment opportunities.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                            <span class="text-lg font-medium">How do you ensure the jobs you offer are legitimate and safe?</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 transform transition-transform"></i>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-6 pt-0">
+                            <p class="text-slate-600 dark:text-slate-400">We conduct thorough vetting of all employers, including:</p>
+                            <ul class="mt-2 space-y-2 text-slate-600 dark:text-slate-400">
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Verification of business registration and licenses</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>On-site visits to workplaces when possible</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Review of employment contracts to ensure fair terms</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Reference checks with current/former employees</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span>Monitoring of wage compliance with local laws</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                            <span class="text-lg font-medium">What industries do you specialize in for job placements?</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 transform transition-transform"></i>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-6 pt-0">
+                            <p class="text-slate-600 dark:text-slate-400">We specialize in several key industries with high demand for African talent:</p>
+                            <ul class="mt-2 space-y-2 text-slate-600 dark:text-slate-400">
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span><strong>Healthcare:</strong> Nurses, doctors, caregivers, medical technicians</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span><strong>Technology:</strong> Software developers, IT specialists, data analysts</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span><strong>Construction:</strong> Engineers, architects, skilled tradespeople</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span><strong>Hospitality:</strong> Hotel staff, chefs, restaurant managers</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check" class="w-5 h-5 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span><strong>Education:</strong> Teachers, professors, education administrators</span>
+                                </li>
+                            </ul>
+                            <p class="mt-4 text-slate-600 dark:text-slate-400">We're continually expanding into new sectors based on market demand and our candidates' skills.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                            <span class="text-lg font-medium">How long does the placement process typically take?</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 transform transition-transform"></i>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-6 pt-0">
+                            <p class="text-slate-600 dark:text-slate-400">The timeline varies depending on several factors:</p>
+                            <ul class="mt-2 space-y-2 text-slate-600 dark:text-slate-400">
+                                <li class="flex items-start">
+                                    <i data-lucide="clock" class="w-5 h-5 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span><strong>Standard placements:</strong> 4-8 weeks from application to job offer</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="clock" class="w-5 h-5 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span><strong>Specialized roles:</strong> 8-12 weeks for positions requiring specific certifications</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="clock" class="w-5 h-5 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span><strong>International placements:</strong> Additional 4-8 weeks for visa processing</span>
+                                </li>
+                            </ul>
+                            <p class="mt-4 text-slate-600 dark:text-slate-400">We work to expedite the process while ensuring all due diligence is completed for your safety and success.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                        <button class="faq-toggle w-full flex justify-between items-center p-6 text-left hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                            <span class="text-lg font-medium">What support do you provide after placement?</span>
+                            <i data-lucide="chevron-down" class="w-5 h-5 transform transition-transform"></i>
+                        </button>
+                        <div class="faq-content hidden px-6 pb-6 pt-0">
+                            <p class="text-slate-600 dark:text-slate-400">Our support continues well after placement through:</p>
+                            <ul class="mt-2 space-y-2 text-slate-600 dark:text-slate-400">
+                                <li class="flex items-start">
+                                    <i data-lucide="check-circle" class="w-5 h-5 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span><strong>Regular check-ins:</strong> Monthly follow-ups for the first 6 months</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check-circle" class="w-5 h-5 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span><strong>24/7 support line:</strong> Dedicated hotline for urgent issues</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check-circle" class="w-5 h-5 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span><strong>Cultural integration:</strong> Local community connections and resources</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check-circle" class="w-5 h-5 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span><strong>Career advancement:</strong> Access to additional training and upskilling</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check-circle" class="w-5 h-5 text-cyan-600 dark:text-cyan-400 mr-2 mt-0.5 flex-shrink-0"></i>
+                                    <span><strong>Conflict resolution:</strong> Mediation services if workplace issues arise</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 lg:py-24 bg-slate-100 dark:bg-slate-800">
+            <div class="container mx-auto px-4 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="fade-in-on-scroll">
+                        <h2 class="text-3xl lg:text-4xl font-bold mb-6">Need More Information?</h2>
+                        <p class="text-lg text-slate-600 dark:text-slate-400 mb-8">Our placement specialists are available to answer your questions about the program, application process, or employer partnerships.</p>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 p-3 rounded-lg mr-4">
+                                    <i data-lucide="mail" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">Email Us</h4>
+                                    <a href="mailto:placement@opanaf.org" class="text-slate-600 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400">placement@opanaf.org</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 p-3 rounded-lg mr-4">
+                                    <i data-lucide="phone" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">Call Us</h4>
+                                    <a href="tel:+2348000000000" class="text-slate-600 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400">+234 800 000 0000 (Nigeria)</a><br>
+                                    <a href="tel:+9718000000000" class="text-slate-600 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400">+971 800 000 0000 (UAE)</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-600 dark:text-cyan-400 p-3 rounded-lg mr-4">
+                                    <i data-lucide="map-pin" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">Visit Us</h4>
+                                    <p class="text-slate-600 dark:text-slate-400">Abuja Office: 123 Empowerment Avenue, Central District, Abuja, Nigeria</p>
+                                    <p class="text-slate-600 dark:text-slate-400 mt-2">Dubai Office: OPANAF International, Business Bay, Dubai, UAE</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="fade-in-on-scroll bg-white dark:bg-slate-900 p-8 rounded-xl shadow-lg" style="transition-delay: 100ms;">
+                        <h3 class="text-2xl font-bold mb-6">Contact Our Placement Team</h3>
+                        <form name="contact-placement" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="space-y-6">
+                            <input type="hidden" name="form-name" value="contact-placement">
+                            <div class="hidden">
+                                <label>Don't fill this out if you're human: <input name="bot-field"></label>
+                            </div>
+                            <div>
+                                <label for="contact-name" class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Your Name</label>
+                                <input type="text" name="name" id="contact-name" required class="w-full px-4 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500">
+                            </div>
+                            
+                            <div>
+                                <label for="contact-email" class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Email Address</label>
+                                <input type="email" name="email" id="contact-email" required class="w-full px-4 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500">
+                            </div>
+                            
+                            <div>
+                                <label for="contact-subject" class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Subject</label>
+                                <select name="subject" id="contact-subject" class="w-full px-4 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500">
+                                    <option value="">Select a subject</option>
+                                    <option value="candidate">Candidate Inquiry</option>
+                                    <option value="employer">Employer Partnership</option>
+                                    <option value="general">General Question</option>
+                                    <option value="feedback">Feedback/Suggestion</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label for="contact-message" class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Your Message</label>
+                                <textarea name="message" id="contact-message" rows="4" class="w-full px-4 py-3 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500"></textarea>
+                            </div>
+                            
+                            <div class="mt-6">
+                                <button type="submit" class="w-full bg-cyan-600 text-white font-semibold px-6 py-4 rounded-lg hover:bg-cyan-700 transition-all duration-300">
+                                    Send Message
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

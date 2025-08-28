@@ -1,0 +1,62 @@
+<header id="header" class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-lg sticky top-0 z-50 border-b border-slate-200 dark:border-slate-800 transition-all duration-300">
+    <nav class="container mx-auto px-4 lg:px-8 py-4 flex justify-between items-center">
+        <div>
+            <img src="opanaf-light.png" alt="OPANAF logo (light)" class="h-16 inline-block mr-2 dark:hidden">
+            <img src="opanaf-dark.png" alt="OPANAF logo (dark)" class="h-16 inline-block mr-2 hidden dark:inline-block">
+        </div>
+
+
+        <div class="hidden lg:flex items-center space-x-8">
+            <a href="index.html#about" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">About</a>
+            <div class="relative" id="programs-dropdown-container">
+                <button id="programs-dropdown-button" aria-haspopup="true" aria-expanded="false" class="flex items-center hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">
+                    <span>Programs</span>
+                    <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>
+                </button>
+                <div id="programs-dropdown" class="absolute mt-2 w-56 bg-white dark:bg-slate-800 rounded-md shadow-lg py-2 hidden ring-1 ring-black ring-opacity-5" role="menu">
+                    <a href="skill-acquisition.html" role="menuitem" class="block px-4 py-2 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700">Skill Acquisition</a>
+                    <a href="youth-empowerment.html" role="menuitem" class="block px-4 py-2 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700">Youth Empowerment</a>
+                    <a href="relocation-support.html" role="menuitem" class="block px-4 py-2 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700">Relocation Support</a>
+                    <a href="job-placement.html" role="menuitem" class="block px-4 py-2 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700">Job Placement</a>
+                </div>
+            </div>
+            <a href="index.html#impact" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">Our Impact</a>
+            <a href="index.html#contact" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">Contact</a>
+        </div>
+
+        <div class="hidden lg:flex items-center space-x-4">
+            <button class="theme-toggle-btn p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors" aria-label="Toggle theme">
+                <i data-lucide="sun" class="sun-icon w-5 h-5"></i>
+                <i data-lucide="moon" class="moon-icon w-5 h-5 hidden"></i>
+            </button>
+            <button class="join-us-btn bg-cyan-600 text-white font-semibold px-5 py-2 rounded-full hover:bg-cyan-700 transition-all duration-300 transform hover:scale-105">
+                Join Us
+            </button>
+        </div>
+
+        <div class="lg:hidden flex items-center space-x-4">
+             <button class="theme-toggle-btn p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors" aria-label="Toggle theme">
+                <i data-lucide="sun" class="sun-icon w-5 h-5"></i>
+                <i data-lucide="moon" class="moon-icon w-5 h-5 hidden"></i>
+            </button>
+            <button id="mobile-menu-button" class="lg:hidden p-2" aria-label="Open menu">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+    </nav>
+    
+    <div id="mobile-menu" class="lg:hidden hidden">
+        <div class="px-4 pt-2 pb-4 space-y-2 border-t border-slate-200 dark:border-slate-800">
+            <a href="index.html#about" class="block py-2 hover:text-cyan-600 dark:hover:text-cyan-400">About</a>
+            <a href="skill-acquisition.html" class="block py-2 hover:text-cyan-600 dark:hover:text-cyan-400">Skill Acquisition</a>
+            <a href="youth-empowerment.html" class="block py-2 hover:text-cyan-600 dark:hover:text-cyan-400">Youth Empowerment</a>
+            <a href="relocation-support.html" class="block py-2 hover:text-cyan-600 dark:hover:text-cyan-400">Relocation Support</a>
+            <a href="job-placement.html" class="block py-2 hover:text-cyan-600 dark:hover:text-cyan-400">Job Placement</a>
+            <a href="index.html#impact" class="block py-2 hover:text-cyan-600 dark:hover:text-cyan-400">Our Impact</a>
+            <a href="index.html#contact" class="block py-2 hover:text-cyan-600 dark:hover:text-cyan-400">Contact</a>
+            <button class="join-us-btn w-full mt-4 bg-cyan-600 text-white font-semibold px-5 py-3 rounded-full hover:bg-cyan-700 transition-all">
+                Join Us
+            </button>
+        </div>
+    </div>
+</header>

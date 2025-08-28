@@ -1,0 +1,127 @@
+<footer class="bg-slate-100 dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700">
+    <div class="container mx-auto px-4 lg:px-8 py-12">
+        <div class="grid md:grid-cols-3 gap-8">
+            <div>
+                <img src="opanaf-white.png" alt="OPANAF logo (light)" class="h-16 inline-block mr-2 dark:hidden">
+                <img src="opanaf-dark.png" alt="OPANAF logo (dark)" class="h-16 inline-block mr-2 hidden dark:inline-block">
+                <p class="text-slate-600 dark:text-slate-400">A world where Africans everywhere thrive with dignity, opportunity, and freedom—shaping their destiny and uplifting generations to come.</p>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="index.html#about" class="hover:text-cyan-600 dark:hover:text-cyan-400">About Us</a></li>
+                    <li><a href="index.html#programs" class="hover:text-cyan-600 dark:hover:text-cyan-400">Programs</a></li>
+                    <li><a href="index.html#impact" class="hover:text-cyan-600 dark:hover:text-cyan-400">Impact</a></li>
+                    <li><a href="index.html#contact" class="hover:text-cyan-600 dark:hover:text-cyan-400">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Connect With Us</h3>
+                <div class="flex space-x-4">
+                    <a href="#" class="p-2 bg-slate-200 dark:bg-slate-700 rounded-full hover:bg-cyan-100 dark:hover:bg-cyan-800 transition-colors" aria-label="Twitter"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                    <a href="#" class="p-2 bg-slate-200 dark:bg-slate-700 rounded-full hover:bg-cyan-100 dark:hover:bg-cyan-800 transition-colors" aria-label="LinkedIn"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                    <a href="#" class="p-2 bg-slate-200 dark:bg-slate-700 rounded-full hover:bg-cyan-100 dark:hover:bg-cyan-800 transition-colors" aria-label="Facebook"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                </div>
+                 <p class="text-slate-600 dark:text-slate-400 mt-4">Email: <a href="mailto:info@opanaf.org" class="hover:text-cyan-600 dark:hover:text-cyan-400">info@opanaf.org</a></p>
+            </div>
+        </div>
+        <div class="mt-12 border-t border-slate-300 dark:border-slate-700 pt-8 text-center text-slate-500 dark:text-slate-400">
+            <p>&copy; 2024 OPANAF. All Rights Reserved. <a href="https://www.opanaf.org" class="underline">www.opanaf.org</a></p>
+            <p class="mt-2 text-sm">Overseas Pan Africanism (OPANAF) Trustees - Registered in Abuja, Nigeria</p>
+        </div>
+    </div>
+</footer>
+
+<div id="modal" class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center z-50 p-4" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div id="modal-content" class="bg-white dark:bg-slate-800 rounded-lg shadow-2xl p-8 w-full max-w-lg transform scale-95 transition-transform duration-300">
+        <div class="flex justify-between items-center mb-6">
+            <h2 id="modal-title" class="text-2xl font-bold">Express Interest</h2>
+            <button id="close-modal-btn" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700" aria-label="Close modal">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+        </div>
+        <form id="interest-form" name="interest" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="interest">
+            <div class="hidden">
+                <label>Don't fill this out if you're human: <input name="bot-field"></label>
+            </div>
+            <div class="space-y-4">
+                <div>
+                    <label for="name" class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Full Name</label>
+                    <input type="text" name="name" id="name" required class="w-full px-4 py-2 bg-slate-100 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-md focus:ring-cyan-500 focus:border-cyan-500">
+                </div>
+                 <div>
+                    <label for="email" class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">Email Address</label>
+                    <input type="email" name="email" id="email" required class="w-full px-4 py-2 bg-slate-100 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-md focus:ring-cyan-500 focus:border-cyan-500">
+                </div>
+                <div>
+                    <label for="interest" class="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-1">How would you like to get involved?</label>
+                    <textarea name="interest" id="interest" rows="4" class="w-full px-4 py-2 bg-slate-100 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-md focus:ring-cyan-500 focus:border-cyan-500" placeholder="e.g., Volunteering, Partnership, Donation..."></textarea>
+                </div>
+            </div>
+            <div class="mt-6">
+                <button type="submit" class="w-full bg-cyan-600 text-white font-semibold px-5 py-3 rounded-md hover:bg-cyan-700 transition-all duration-300">
+                    Submit
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Coming Soon Modal -->
+<div id="coming-soon-modal" class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center z-50 p-4" role="dialog" aria-modal="true" aria-labelledby="coming-soon-title">
+    <div class="bg-white dark:bg-slate-800 rounded-lg shadow-2xl p-8 w-full max-w-md transform scale-95 transition-transform duration-300">
+        <div class="text-center">
+            <!-- Icon -->
+            <div class="mx-auto mb-6 w-16 h-16 bg-cyan-100 dark:bg-cyan-900/50 rounded-full flex items-center justify-center">
+                <i data-lucide="rocket" class="w-8 h-8 text-cyan-600 dark:text-cyan-400"></i>
+            </div>
+            
+            <!-- Title -->
+            <h2 id="coming-soon-title" class="text-2xl font-bold text-slate-900 dark:text-white mb-4">Coming Soon!</h2>
+            
+            <!-- Message -->
+            <p class="text-slate-600 dark:text-slate-400 mb-6">
+                We're working hard to bring you this feature. Get notified when it's ready!
+            </p>
+            
+            <!-- Email signup -->
+            <form name="coming-soon-notify" method="POST" data-netlify="true" data-netlify-honeypot="bot-field-cs" class="space-y-4 mb-6">
+                <input type="hidden" name="form-name" value="coming-soon-notify">
+                <input type="hidden" name="feature" id="cs-feature-name" value="">
+                <div class="hidden">
+                    <label>Don't fill this out if you're human: <input name="bot-field-cs"></label>
+                </div>
+                
+                <div>
+                    <input type="email" name="email" placeholder="Enter your email" required 
+                           class="w-full px-4 py-3 bg-slate-100 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 text-slate-900 dark:text-white">
+                </div>
+                
+                <button type="submit" class="w-full bg-cyan-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-cyan-700 transition-all duration-300">
+                    Notify Me
+                </button>
+            </form>
+            
+            <!-- Expected timeline -->
+            <div class="text-center mb-6">
+                <p class="text-sm text-slate-500 dark:text-slate-400">
+                    <i data-lucide="calendar" class="w-4 h-4 inline mr-1"></i>
+                    Expected launch: <span class="font-medium" id="cs-timeline">Q1 2025</span>
+                </p>
+            </div>
+            
+            <!-- Social proof -->
+            <div class="text-center mb-6">
+                <p class="text-xs text-slate-500 dark:text-slate-400">
+                    Join <span class="font-medium text-cyan-600 dark:text-cyan-400">500+</span> others waiting for this feature
+                </p>
+            </div>
+            
+            <!-- Close button -->
+            <button id="close-coming-soon-btn" class="text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors">
+                Maybe Later
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Test | OPANAF</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#ecfeff',
+                            100: '#cffafe',
+                            200: '#a5f3fc',
+                            300: '#67e8f9',
+                            400: '#22d3ee',
+                            500: '#06b6d4',
+                            600: '#0891b2',
+                            700: '#0e7490',
+                            800: '#155e75',
+                            900: '#164e63',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <script>
+        // Enhanced theme initialization script
+        (function() {
+            // Function to apply theme
+            function applyTheme() {
+                const theme = localStorage.theme || 
+                    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                
+                // Remove both classes first, then add the correct one
+                document.documentElement.classList.remove('dark', 'light');
+                document.documentElement.classList.add(theme);
+                document.documentElement.setAttribute('data-theme', theme);
+                
+                // Store theme for consistency
+                localStorage.setItem('theme', theme);
+                
+                console.log(`[THEME INIT] Applied theme: ${theme}`);
+            }
+            
+            // Apply theme immediately
+            applyTheme();
+            
+            // Watch for storage changes (for cross-tab sync)
+            window.addEventListener('storage', function(e) {
+                if (e.key === 'theme') {
+                    applyTheme();
+                }
+            });
+        })();
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-200 antialiased">
+    
+    <div id="header-placeholder"></div>
+
+    <main class="py-20">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-4xl font-bold text-center mb-8">Theme System Test</h1>
+                
+                <!-- Theme Info Display -->
+                <div class="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-lg mb-8">
+                    <h2 class="text-2xl font-bold mb-4">Current Theme Status</h2>
+                    <div id="theme-status" class="space-y-2">
+                        <p>HTML Classes: <span id="html-classes" class="font-mono"></span></p>
+                        <p>localStorage.theme: <span id="local-storage" class="font-mono"></span></p>
+                        <p>System Preference: <span id="system-pref" class="font-mono"></span></p>
+                    </div>
+                </div>
+
+                <!-- Test Components -->
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <!-- Form Test -->
+                    <div class="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-bold mb-4">Form Elements Test</h3>
+                        <form class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Text Input</label>
+                                <input type="text" placeholder="Enter text..." class="w-full px-3 py-2 bg-slate-100 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-md">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Select</label>
+                                <select class="w-full px-3 py-2 bg-slate-100 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-md">
+                                    <option>Option 1</option>
+                                    <option>Option 2</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">Textarea</label>
+                                <textarea placeholder="Enter message..." rows="3" class="w-full px-3 py-2 bg-slate-100 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-md"></textarea>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Button Test -->
+                    <div class="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-bold mb-4">Button Tests</h3>
+                        <div class="space-y-4">
+                            <button class="w-full bg-cyan-600 text-white py-2 px-4 rounded-lg hover:bg-cyan-700 transition-colors">
+                                Primary Button
+                            </button>
+                            <button class="w-full bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 py-2 px-4 rounded-lg hover:bg-slate-300 dark:hover:bg-slate-600 transition-colors">
+                                Secondary Button
+                            </button>
+                            <button class="w-full border border-cyan-600 text-cyan-600 dark:text-cyan-400 py-2 px-4 rounded-lg hover:bg-cyan-50 dark:hover:bg-cyan-900/20 transition-colors">
+                                Outline Button
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Manual Theme Test Buttons -->
+                <div class="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-bold mb-4">Manual Theme Testing</h3>
+                    <div class="flex gap-4">
+                        <button id="set-light" class="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600">
+                            Force Light Theme
+                        </button>
+                        <button id="set-dark" class="bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-900">
+                            Force Dark Theme
+                        </button>
+                        <button id="clear-theme" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                            Use System Preference
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="script.js"></script>
+    <script>
+        // Additional test functionality
+        function updateThemeStatus() {
+            document.getElementById('html-classes').textContent = document.documentElement.className;
+            document.getElementById('local-storage').textContent = localStorage.theme || 'not set';
+            document.getElementById('system-pref').textContent = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        // Update status every second
+        setInterval(updateThemeStatus, 1000);
+        updateThemeStatus();
+
+        // Manual theme testing
+        document.getElementById('set-light').addEventListener('click', () => {
+            localStorage.theme = 'light';
+            location.reload();
+        });
+
+        document.getElementById('set-dark').addEventListener('click', () => {
+            localStorage.theme = 'dark';
+            location.reload();
+        });
+
+        document.getElementById('clear-theme').addEventListener('click', () => {
+            localStorage.removeItem('theme');
+            location.reload();
+        });
+    </script>
+</body>
+</html>
