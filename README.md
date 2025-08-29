@@ -65,7 +65,7 @@
 ✅ **Multi-page Navigation** - Comprehensive program details  
 ✅ **Accessibility** - WCAG compliant  
 ✅ **SEO Optimized** - Better search visibility  
-✅ **Payment Integration** - Stripe & PayPal donations  
+
 
 ---
 
@@ -77,33 +77,11 @@
 | **Styling** | Tailwind CSS |
 | **Icons** | Lucide Icons |
 | **Forms** | Netlify Forms |
-| **Payments** | Stripe, PayPal |
 | **Hosting** | GitHub Pages + Netlify |
 | **Domain** | opanaf.org |
 
 ---
 
-## 📁 Project Structure
-
-```
-opanaf/
-├── 📄 index.html              # Homepage
-├── 🎓 skill-acquisition.html  # Skill programs
-├── 👥 youth-empowerment.html  # Youth programs  
-├── ✈️ relocation-support.html # Migration support
-├── 💼 job-placement.html      # Employment services
-├── 🔗 header.html             # Site header component
-├── 🔗 footer.html             # Site footer component
-├── 🎨 style.css               # Custom styles
-├── ⚡ script.js               # Interactive functionality
-├── ⚙️ netlify.toml            # Netlify configuration
-├── 🚫 404.html                # Custom error page
-└── 📁 .github/
-    └── 📁 workflows/
-        └── 🚀 deploy.yml      # GitHub Actions deployment
-```
-
----
 
 ## 🚀 Quick Start
 
@@ -118,7 +96,7 @@ opanaf/
 2. **Start local server:**
    ```bash
    # Using Python's built-in server
-   python -m http.server 8000
+   python -m http.server 5555
    
    # Or using VS Code Live Server extension
    # Right-click index.html → "Open with Live Server"
@@ -126,7 +104,7 @@ opanaf/
 
 3. **Open in browser:**
    ```
-   http://localhost:8000
+   http://localhost:5555
    ```
 
 ### 🌐 Live Deployment
@@ -199,7 +177,7 @@ The website securely collects data through various forms:
 | **🔍 Interest Forms** | General inquiries and volunteer interest | Spam protection |
 | **📝 Application Forms** | Program applications | File uploads supported |
 | **📞 Contact Forms** | Direct communication with teams | Email notifications |
-| **💰 Donation Forms** | Financial contributions | Stripe & PayPal integration |
+| **💰 Donation Forms** | Financial contributions | Secure Payment Gateways
 
 > 🔒 All forms are processed securely through **Netlify Forms** with spam protection.
 
@@ -215,21 +193,6 @@ The website securely collects data through various forms:
 --background-light: #f8fafc; /* Slate 50 */
 --background-dark: #0f172a;  /* Slate 900 */
 ```
-
-### ➕ Adding New Pages
-
-1. 📄 Create new HTML file
-2. 🔗 Include header/footer placeholders
-3. 🧭 Add navigation links in `header.html`
-4. 🗺️ Update sitemap and meta tags
-
-### 📝 Form Modifications
-
-1. 🏗️ Update form HTML with Netlify attributes
-2. ⚙️ Configure form notifications in Netlify dashboard
-3. ✅ Test form submissions
-
----
 
 ## 📱 Browser Support
 
@@ -278,8 +241,7 @@ We thank the following amazing projects and services:
 - 📝 **[Netlify](https://netlify.com)** - For form handling and hosting
 - 🐙 **[GitHub](https://github.com)** - For version control and Pages hosting
 - 📸 **[Unsplash](https://unsplash.com)** - For high-quality stock photography
-- 💳 **[Stripe](https://stripe.com)** - For secure payment processing
-- 💰 **[PayPal](https://paypal.com)** - For global payment solutions
+
 
 ---
 
