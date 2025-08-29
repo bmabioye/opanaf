@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-console.log('[OPANAF DEBUG] DOMContentLoaded. Script is running.');
+// console.log('[OPANAF DEBUG] DOMContentLoaded. Script is running.');
     // =========================================================================
     //  FUNCTION DEFINITIONS
     // =========================================================================
@@ -33,11 +33,11 @@ console.log('[OPANAF DEBUG] DOMContentLoaded. Script is running.');
         // Initialize theme system
         init() {
             if (this.initialized) {
-                console.log('[THEME] Already initialized, skipping...');
+                // console.log('[THEME] Already initialized, skipping...');
                 return;
             }
             
-            console.log('[THEME] Initializing theme system...');
+            // console.log('[THEME] Initializing theme system...');
             this.applyTheme();
             this.watchSystemPreference();
             this.initialized = true;
@@ -56,7 +56,7 @@ console.log('[OPANAF DEBUG] DOMContentLoaded. Script is running.');
             const targetTheme = theme || this.getTheme();
             const isDark = targetTheme === 'dark';
             
-            console.log(`[THEME] Applying theme: ${targetTheme}`);
+            // console.log(`[THEME] Applying theme: ${targetTheme}`);
             
             // Remove both classes completely, then add the correct one
             const htmlElement = document.documentElement;
@@ -74,8 +74,8 @@ console.log('[OPANAF DEBUG] DOMContentLoaded. Script is running.');
             // Store preference (always store when explicitly changing theme)
             localStorage.theme = targetTheme;
             
-            console.log(`[THEME] Final classes: ${htmlElement.className}`);
-            console.log(`[THEME] Data theme: ${htmlElement.getAttribute('data-theme')}`);
+            // console.log(`[THEME] Final classes: ${htmlElement.className}`);
+            // console.log(`[THEME] Data theme: ${htmlElement.getAttribute('data-theme')}`);
             
             // Update all theme toggle buttons and icons
             this.updateThemeControls(isDark);
@@ -92,7 +92,7 @@ console.log('[OPANAF DEBUG] DOMContentLoaded. Script is running.');
             const sunIcons = document.querySelectorAll('.sun-icon');
             const moonIcons = document.querySelectorAll('.moon-icon');
 
-            console.log(`[THEME] Updating ${themeToggleBtns.length} toggle buttons`);
+            // console.log(`[THEME] Updating ${themeToggleBtns.length} toggle buttons`);
             
             sunIcons.forEach(icon => icon.classList.toggle('hidden', isDark));
             moonIcons.forEach(icon => icon.classList.toggle('hidden', !isDark));
@@ -102,7 +102,7 @@ console.log('[OPANAF DEBUG] DOMContentLoaded. Script is running.');
         toggle() {
             const currentTheme = this.getTheme();
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            console.log(`[THEME] Toggling from ${currentTheme} to ${newTheme}`);
+            // console.log(`[THEME] Toggling from ${currentTheme} to ${newTheme}`);
             
             // Store theme immediately
             localStorage.setItem('theme', newTheme);
@@ -114,7 +114,7 @@ console.log('[OPANAF DEBUG] DOMContentLoaded. Script is running.');
             htmlElement.classList.add(newTheme);
             htmlElement.setAttribute('data-theme', newTheme);
             
-            console.log(`[THEME] Toggle complete - classes: ${htmlElement.className}`);
+            // console.log(`[THEME] Toggle complete - classes: ${htmlElement.className}`);
             
             // Update button states
             this.updateThemeControls(newTheme === 'dark');
@@ -124,7 +124,7 @@ console.log('[OPANAF DEBUG] DOMContentLoaded. Script is running.');
         watchSystemPreference() {
             window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
                 if (!('theme' in localStorage)) {
-                    console.log('[THEME] System preference changed, applying new theme');
+                    // console.log('[THEME] System preference changed, applying new theme');
                     this.applyTheme();
                 }
             });
@@ -133,7 +133,7 @@ console.log('[OPANAF DEBUG] DOMContentLoaded. Script is running.');
         // Attach event listeners to theme toggle buttons
         attachEventListeners() {
             const themeToggleBtns = document.querySelectorAll('.theme-toggle-btn');
-            console.log(`[THEME] Attaching listeners to ${themeToggleBtns.length} buttons`);
+            // console.log(`[THEME] Attaching listeners to ${themeToggleBtns.length} buttons`);
             
             // Remove any existing listeners first
             themeToggleBtns.forEach((btn) => {
@@ -143,14 +143,14 @@ console.log('[OPANAF DEBUG] DOMContentLoaded. Script is running.');
             // Bind the toggle function to maintain 'this' context
             this.handleToggleClick = (e) => {
                 e.preventDefault();
-                console.log(`[THEME] Toggle button clicked`);
+                // console.log(`[THEME] Toggle button clicked`);
                 
                 // Use the same logic as the test page force buttons
                 const currentTheme = localStorage.getItem('theme') || 
                     (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
                 const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
                 
-                console.log(`[THEME] Switching from ${currentTheme} to ${newTheme}`);
+                // console.log(`[THEME] Switching from ${currentTheme} to ${newTheme}`);
                 
                 // Store and apply theme immediately
                 localStorage.setItem('theme', newTheme);
@@ -162,7 +162,7 @@ console.log('[OPANAF DEBUG] DOMContentLoaded. Script is running.');
                 htmlElement.classList.add(newTheme);
                 htmlElement.setAttribute('data-theme', newTheme);
                 
-                console.log(`[THEME] Applied classes: ${htmlElement.className}`);
+                // console.log(`[THEME] Applied classes: ${htmlElement.className}`);
                 
                 // Update button states
                 this.updateThemeControls(newTheme === 'dark');
@@ -181,7 +181,7 @@ console.log('[OPANAF DEBUG] DOMContentLoaded. Script is running.');
      * Initializes all event listeners for interactive elements.
      */
     const initializeInteractiveElements = () => {
-        console.log('[OPANAF DEBUG] Initializing interactive elements...');
+        // console.log('[OPANAF DEBUG] Initializing interactive elements...');
         
         // Initialize theme system with event listeners
         themeManager.attachEventListeners();
@@ -538,7 +538,7 @@ console.log('[OPANAF DEBUG] DOMContentLoaded. Script is running.');
     // =========================================================================
     
     // Initialize theme system immediately (before loading components)
-    console.log('[OPANAF DEBUG] Starting execution logic.');
+    // console.log('[OPANAF DEBUG] Starting execution logic.');
     themeManager.init();
     
     // Initialize features that can run immediately
@@ -548,7 +548,7 @@ console.log('[OPANAF DEBUG] DOMContentLoaded. Script is running.');
     const footerPromise = loadComponent('footer.html', 'footer-placeholder');
 
     Promise.all([headerPromise, footerPromise]).then(() => {
-        console.log('[OPANAF DEBUG] Header and Footer loaded successfully.');
+        // console.log('[OPANAF DEBUG] Header and Footer loaded successfully.');
         lucide.createIcons();
         
         // Re-initialize theme controls now that header/footer are loaded
